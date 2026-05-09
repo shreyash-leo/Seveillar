@@ -130,8 +130,8 @@ export default function Navbar() {
               onClick={handleGetInTouch}
               className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#E58A2F] focus:ring-offset-2 ${
                 isScrolled
-                  ? 'bg-[#E58A2F] text-white hover:bg-[#0E3B5F] shadow-md'
-                  : 'bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-white hover:text-[#0E3B5F]'
+                  ? 'bg-[#E58A2F] text-white hover:bg-[#800000] shadow-md'
+                  : 'bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-[#800000] hover:text-white'
               }`}
               aria-label="Get in touch with Seveillar"
             >
