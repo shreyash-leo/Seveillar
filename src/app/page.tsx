@@ -244,48 +244,125 @@ export default function Home() {
             <div className="w-20 h-px bg-[#F97316] mt-8"></div>
           </div>
 
-          {/* Asymmetrical Image Collage - Premium Editorial Layout */}
-          <div className="relative mb-32">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
-              {/* Large image - left dominant */}
-              <div className="lg:col-span-7">
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
-                  <img
-                    src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-                    alt="Clinical facility"
-                    className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                </div>
-              </div>
-              
-              {/* Right column with two images - offset and asymmetrical */}
-              <div className="lg:col-span-5 space-y-6">
-                <div className="relative overflow-hidden rounded-2xl shadow-xl ml-0 lg:ml-8 group">
-                  <img
-                    src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                    alt="Packaging process"
-                    className="w-full h-[230px] object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="relative overflow-hidden rounded-2xl shadow-xl ml-0 lg:ml-16 group">
-                  <img
-                    src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                    alt="Lab closeup"
-                    className="w-full h-[230px] object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-              </div>
-            </div>
+          {/* ========== HORIZONTAL PREMIUM IMAGE COLLAGE ========== */}
+<div className="relative mb-36 -mx-2 md:-mx-4 lg:-mx-8">
 
-            {/* Floating Statistical Pills - Modern, minimal */}
-            <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center gap-3 z-20 whitespace-nowrap">
-              <span className="bg-white/90 backdrop-blur-sm text-[#800020] text-sm font-medium px-5 py-2.5 rounded-full shadow-lg border border-gray-100 tracking-wide">✓ 2015 Founded</span>
-              <span className="bg-white/90 backdrop-blur-sm text-[#800020] text-sm font-medium px-5 py-2.5 rounded-full shadow-lg border border-gray-100 tracking-wide">✓ USFDA Audited</span>
-              <span className="bg-white/90 backdrop-blur-sm text-[#800020] text-sm font-medium px-5 py-2.5 rounded-full shadow-lg border border-gray-100 tracking-wide">✓ Global Trials</span>
-              <span className="bg-white/90 backdrop-blur-sm text-[#800020] text-sm font-medium px-5 py-2.5 rounded-full shadow-lg border border-gray-100 tracking-wide">✓ QP Certified</span>
-            </div>
-          </div>
+  {/* Main Horizontal Layout */}
+  <div className="grid grid-cols-1 lg:grid-cols-14 gap-5 lg:gap-6 items-stretch">
+
+    {/* Large Left Image */}
+    <div className="lg:col-span-5">
+      <div className="relative overflow-hidden rounded-[28px] shadow-2xl group h-full">
+        <img
+          src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+          alt="Clinical facility"
+          className="w-full h-[520px] object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+      </div>
+    </div>
+
+    {/* Middle Image */}
+    <div className="lg:col-span-3">
+      <div className="relative overflow-hidden rounded-[26px] shadow-xl group h-full">
+        <img
+          src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+          alt="Packaging process"
+          className="w-full h-[520px] object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      </div>
+    </div>
+
+    {/* Right Vertical Stack */}
+    <div className="lg:col-span-3 space-y-5">
+      <div className="relative overflow-hidden rounded-[24px] shadow-xl group">
+        <img
+          src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+          alt="Lab closeup"
+          className="w-full h-[250px] object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      </div>
+
+      <div className="relative overflow-hidden rounded-[24px] shadow-xl group">
+        <img
+          src="https://images.unsplash.com/photo-1583912086096-8c60d75a53f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+          alt="Global operations"
+          className="w-full h-[245px] object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      </div>
+    </div>
+
+    {/* Extra Side Image */}
+    <div className="hidden lg:block lg:col-span-3">
+      <div className="relative overflow-hidden rounded-[26px] shadow-xl group h-full">
+        <img
+          src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+          alt="Research laboratory"
+          className="w-full h-[520px] object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      </div>
+    </div>
+
+  </div>
+
+  {/* Bottom Horizontal Strip */}
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5">
+
+    <div className="relative overflow-hidden rounded-[22px] shadow-lg group">
+      <img
+        src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+        alt="Clinical logistics"
+        className="w-full h-[190px] object-cover transition-transform duration-700 group-hover:scale-110"
+      />
+    </div>
+
+    <div className="relative overflow-hidden rounded-[22px] shadow-lg group">
+      <img
+        src="https://images.unsplash.com/photo-1580281657527-47f249e8f4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+        alt="Medical storage"
+        className="w-full h-[190px] object-cover transition-transform duration-700 group-hover:scale-110"
+      />
+    </div>
+
+    <div className="relative overflow-hidden rounded-[22px] shadow-lg group">
+      <img
+        src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+        alt="Clinical packaging"
+        className="w-full h-[190px] object-cover transition-transform duration-700 group-hover:scale-110"
+      />
+    </div>
+
+    <div className="relative overflow-hidden rounded-[22px] shadow-lg group">
+      <img
+        src="https://images.unsplash.com/photo-1579165466741-7f35e4755660?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+        alt="Clinical analysis"
+        className="w-full h-[190px] object-cover transition-transform duration-700 group-hover:scale-110"
+      />
+    </div>
+
+  </div>
+
+  {/* Floating Pills */}
+  <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex flex-wrap items-center justify-center gap-3 z-20">
+
+    <span className="bg-white/95 backdrop-blur-md text-[#800020] text-sm font-medium px-5 py-2.5 rounded-full shadow-lg border border-gray-100 tracking-wide">
+      ✓ 2015 Founded
+    </span>
+
+    <span className="bg-white/95 backdrop-blur-md text-[#800020] text-sm font-medium px-5 py-2.5 rounded-full shadow-lg border border-gray-100 tracking-wide">
+      ✓ USFDA Audited
+    </span>
+
+    <span className="bg-white/95 backdrop-blur-md text-[#800020] text-sm font-medium px-5 py-2.5 rounded-full shadow-lg border border-gray-100 tracking-wide">
+      ✓ Global Trials
+    </span>
+
+    <span className="bg-white/95 backdrop-blur-md text-[#800020] text-sm font-medium px-5 py-2.5 rounded-full shadow-lg border border-gray-100 tracking-wide">
+      ✓ QP Certified
+    </span>
+
+  </div>
+</div>
 
           {/* Editorial Text Block + Metrics - Minimal, spacious */}
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
