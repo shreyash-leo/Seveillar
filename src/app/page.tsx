@@ -1,4 +1,3 @@
-// app/page.tsx
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
@@ -76,92 +75,6 @@ export default function Home() {
       { threshold: 0.3 }
     );
     if (statsRef.current) observer.observe(statsRef.current);
-  }, []);
-
-  useEffect(() => {
-    if (!worldMapRef.current) return;
-    
-    const locations = [
-      { name: "North America", left: "15%", top: "35%" },
-      { name: "Europe", left: "45%", top: "30%" },
-      { name: "India (HQ)", left: "70%", top: "55%" },
-      { name: "Asia Pacific", left: "80%", top: "45%" },
-      { name: "Middle East", left: "58%", top: "48%" },
-      { name: "South America", left: "28%", top: "60%" },
-      { name: "Africa", left: "52%", top: "58%" },
-    ];
-    
-    const mapContainer = worldMapRef.current;
-    locations.forEach(loc => {
-      const dot = document.createElement('div');
-      dot.className = 'world-map-dot';
-      dot.style.position = 'absolute';
-      dot.style.left = loc.left;
-      dot.style.top = loc.top;
-      dot.style.width = '10px';
-      dot.style.height = '10px';
-      dot.style.backgroundColor = '#F97316';
-      dot.style.borderRadius = '50%';
-      dot.style.boxShadow = '0 0 0 0 rgba(249, 115, 22, 0.7)';
-      dot.style.animation = 'pulse 2s infinite';
-      dot.style.zIndex = '10';
-      
-      const label = document.createElement('div');
-      label.className = 'world-map-label';
-      label.innerText = loc.name;
-      label.style.position = 'absolute';
-      label.style.left = `calc(${loc.left} + 12px)`;
-      label.style.top = `calc(${loc.top} - 8px)`;
-      label.style.fontSize = '10px';
-      label.style.color = '#4B5563';
-      label.style.fontWeight = '600';
-      label.style.backgroundColor = 'rgba(255,255,255,0.95)';
-      label.style.padding = '2px 8px';
-      label.style.borderRadius = '20px';
-      label.style.whiteSpace = 'nowrap';
-      label.style.fontFamily = 'sans-serif';
-      label.style.zIndex = '10';
-      label.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-      
-      mapContainer.appendChild(dot);
-      mapContainer.appendChild(label);
-    });
-    
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.7); transform: scale(1); }
-        70% { box-shadow: 0 0 0 12px rgba(249, 115, 22, 0); transform: scale(1.2); }
-        100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); transform: scale(1); }
-      }
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-      }
-      @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(30px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-      .animate-float {
-        animation: float 4s ease-in-out infinite;
-      }
-      .animate-fade-up {
-        animation: fadeUp 0.8s ease-out forwards;
-      }
-    `;
-    document.head.appendChild(style);
-    
-    return () => {
-      if (mapContainer) {
-        const dots = mapContainer.querySelectorAll('.world-map-dot, .world-map-label');
-        dots.forEach(dot => dot.remove());
-      }
-      style.remove();
-    };
   }, []);
 
   const services = [
@@ -315,86 +228,121 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Us Section - Light theme */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="grid grid-cols-3 gap-3">
-                <img
-                  src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Facility"
-                  className="rounded-2xl shadow-xl w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Packaging"
-                  className="rounded-2xl shadow-xl w-full h-48 object-cover mt-6 hover:scale-105 transition-transform duration-500"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Lab"
-                  className="rounded-2xl shadow-xl w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Warehouse"
-                  className="rounded-2xl shadow-xl w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Team"
-                  className="rounded-2xl shadow-xl w-full h-48 object-cover mt-6 hover:scale-105 transition-transform duration-500"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1581574921794-2b5c9c0e2dfb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Distribution"
-                  className="rounded-2xl shadow-xl w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
-                />
+      {/* ========== PREMIUM EDITORIAL ABOUT SECTION ========== */}
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-20">
+          {/* Large Editorial Heading */}
+          <div className="mb-20">
+            <div className="inline-block mb-6">
+              <span className="text-xs font-mono tracking-wider text-[#F97316] bg-[#F97316]/5 px-3 py-1 rounded-full">MANIFESTO</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-gray-900 leading-[1.1] max-w-4xl">
+              Built for Global
+              <br />
+              <span className="font-bold text-[#800020]">Clinical Supply Excellence.</span>
+            </h2>
+            <div className="w-20 h-px bg-[#F97316] mt-8"></div>
+          </div>
+
+          {/* Asymmetrical Image Collage - Premium Editorial Layout */}
+          <div className="relative mb-32">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+              {/* Large image - left dominant */}
+              <div className="lg:col-span-7">
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
+                  <img
+                    src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
+                    alt="Clinical facility"
+                    className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                </div>
               </div>
-              <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-white/95 backdrop-blur-md text-gray-800 p-4 rounded-2xl shadow-xl border border-gray-200 w-11/12 text-center">
-                <div className="flex flex-wrap justify-center gap-4">
-                  {certifications.map((cert, i) => (
-                    <span key={i} className="text-xs font-semibold bg-[#F97316]/10 text-[#800020] px-3 py-1 rounded-full">✓ {cert}</span>
-                  ))}
+              
+              {/* Right column with two images - offset and asymmetrical */}
+              <div className="lg:col-span-5 space-y-6">
+                <div className="relative overflow-hidden rounded-2xl shadow-xl ml-0 lg:ml-8 group">
+                  <img
+                    src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="Packaging process"
+                    className="w-full h-[230px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <div className="relative overflow-hidden rounded-2xl shadow-xl ml-0 lg:ml-16 group">
+                  <img
+                    src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="Lab closeup"
+                    className="w-full h-[230px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
               </div>
             </div>
-            <div>
-              <div className="inline-block bg-[#F97316]/10 px-4 py-1 rounded-full text-sm font-semibold text-[#F97316] mb-4">
-                About Seveillar
+
+            {/* Floating Statistical Pills - Modern, minimal */}
+            <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center gap-3 z-20 whitespace-nowrap">
+              <span className="bg-white/90 backdrop-blur-sm text-[#800020] text-sm font-medium px-5 py-2.5 rounded-full shadow-lg border border-gray-100 tracking-wide">✓ 2015 Founded</span>
+              <span className="bg-white/90 backdrop-blur-sm text-[#800020] text-sm font-medium px-5 py-2.5 rounded-full shadow-lg border border-gray-100 tracking-wide">✓ USFDA Audited</span>
+              <span className="bg-white/90 backdrop-blur-sm text-[#800020] text-sm font-medium px-5 py-2.5 rounded-full shadow-lg border border-gray-100 tracking-wide">✓ Global Trials</span>
+              <span className="bg-white/90 backdrop-blur-sm text-[#800020] text-sm font-medium px-5 py-2.5 rounded-full shadow-lg border border-gray-100 tracking-wide">✓ QP Certified</span>
+            </div>
+          </div>
+
+          {/* Editorial Text Block + Metrics - Minimal, spacious */}
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <p className="text-gray-500 text-sm uppercase tracking-wider font-mono">The Story</p>
+                <p className="text-gray-700 text-lg leading-relaxed font-light">
+                  Seveillar Clinical Supplies Services Pvt. Ltd. is a specialized clinical trial supplies management company providing end-to-end solutions for pharmaceutical, biotechnology, and CRO organizations globally.
+                </p>
+                <p className="text-gray-700 text-lg leading-relaxed font-light">
+                  Established in 2015, Seveillar delivers compliant, reliable, and efficient clinical supply chain solutions including packaging, labeling, storage, distribution, and clinical logistics management for global clinical studies.
+                </p>
+                <p className="text-gray-700 text-lg leading-relaxed font-light">
+                  With <span className="font-semibold text-[#800020]">QP-certified</span> and <span className="font-semibold text-[#800020]">USFDA-audited</span> infrastructure, Seveillar supports complex multi-regional clinical trials while maintaining the highest standards of quality, compliance, and operational excellence.
+                </p>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Global Clinical Supply <span className="text-[#F97316]">Excellence</span></h2>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                Seveillar Clinical Supplies Services Pvt. Ltd. is a specialized clinical trial supplies management company providing end-to-end solutions for pharmaceutical, biotechnology, and CRO organizations globally.
-              </p>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                Established in 2015, Seveillar delivers compliant, reliable, and efficient clinical supply chain solutions including packaging, labeling, storage, distribution, and clinical logistics management for global clinical studies.
-              </p>
-              <p className="text-gray-600 leading-relaxed mb-8">
-                With QP-certified and USFDA-audited infrastructure, Seveillar supports complex multi-regional clinical trials while maintaining the highest standards of quality, compliance, and operational excellence.
-              </p>
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="bg-gray-50 p-4 rounded-xl shadow-md text-center border-l-4 border-[#F97316]">
-                  <div className="text-2xl font-bold text-[#800020]">2015</div>
-                  <div className="text-sm text-gray-500">Established</div>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-xl shadow-md text-center border-l-4 border-[#F97316]">
-                  <div className="text-2xl font-bold text-[#800020]">Global</div>
-                  <div className="text-sm text-gray-500">Clinical Trial Support</div>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-xl shadow-md text-center border-l-4 border-[#F97316]">
-                  <div className="text-2xl font-bold text-[#800020]">USFDA</div>
-                  <div className="text-sm text-gray-500">Audited Facility</div>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-xl shadow-md text-center border-l-4 border-[#F97316]">
-                  <div className="text-2xl font-bold text-[#800020]">QP</div>
-                  <div className="text-sm text-gray-500">Certified Operations</div>
+              <div className="pt-4">
+                <button className="group inline-flex items-center gap-3 text-[#F97316] hover:text-[#800020] font-medium transition-colors border-b border-[#F97316]/30 pb-1">
+                  <span>Read the full story</span>
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Thin Horizontal Metrics - Very elegant */}
+            <div className="space-y-10">
+              <div className="border-t border-gray-200 pt-8">
+                <div className="grid grid-cols-2 gap-x-8 gap-y-8">
+                  <div>
+                    <div className="text-4xl font-light text-[#800020] tracking-tight">2015</div>
+                    <div className="text-gray-400 text-sm uppercase tracking-wider mt-1 font-mono">Founded</div>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-light text-[#800020] tracking-tight">50<span className="text-2xl">+</span></div>
+                    <div className="text-gray-400 text-sm uppercase tracking-wider mt-1 font-mono">Global Trials</div>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-light text-[#800020] tracking-tight">25<span className="text-2xl">+</span></div>
+                    <div className="text-gray-400 text-sm uppercase tracking-wider mt-1 font-mono">Countries</div>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-light text-[#800020] tracking-tight">100<span className="text-2xl">%</span></div>
+                    <div className="text-gray-400 text-sm uppercase tracking-wider mt-1 font-mono">Compliance Focus</div>
+                  </div>
                 </div>
               </div>
-              <button className="bg-[#F97316] hover:bg-[#800020] text-white px-8 py-3 rounded-md font-semibold shadow-lg transition-all duration-300 hover:shadow-xl transform hover:scale-105">
-                Learn More About Us
-              </button>
+              
+              {/* Certification Badges - Minimal */}
+              <div className="flex flex-wrap gap-3 pt-4 border-t border-gray-100">
+                {certifications.map((cert, i) => (
+                  <span key={i} className="text-xs font-medium text-gray-500 bg-gray-50 px-3 py-1.5 rounded-full tracking-wide">
+                    {cert}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
