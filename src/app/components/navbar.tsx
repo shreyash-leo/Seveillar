@@ -76,27 +76,29 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out ${
           isScrolled 
-            ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' 
-            : 'bg-white/10 backdrop-blur-xl border-b border-white/20 py-5'
+  ? 'bg-white/95 backdrop-blur-md shadow-lg py-1' 
+  : 'bg-white/10 backdrop-blur-xl border-b border-white/20 py-2'
         }`}
         aria-label="Main navigation"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          {/* Logo with scaling effect */}
-          <Link 
-            href="/" 
-            className="flex items-center transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-[#E58A2F] rounded-lg"
-            aria-label="Seveillar Home"
-          >
-            <div className={`font-bold tracking-tight transition-all duration-500 ${
-              isScrolled ? 'text-2xl' : 'text-3xl md:text-4xl'
-            }`}>
-              <span className={isScrolled ? 'text-[#0E3B5F]' : 'text-white'}>
-                Seveillar
-              </span>
-              <span className="text-[#E58A2F]">.</span>
-            </div>
-          </Link>
+
+          {/* Logo */}
+            <Link
+              href="/"
+              className="flex items-center transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-[#E58A2F] rounded-lg"
+              aria-label="Seveillar Home"
+            >
+              <img
+                src="/logo.png"
+                alt="Seveillar Logo"
+                className={`object-contain transition-all duration-500 ${
+                  isScrolled
+                    ? 'h-16 md:h-20'
+                    : 'h-20 md:h-24'
+                }`}
+              />
+            </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
