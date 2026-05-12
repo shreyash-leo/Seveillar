@@ -541,32 +541,30 @@ export default function ServicesPage() {
 </section>
 
        {/* ================================================= */}
-{/* PREMIUM OPERATIONAL WORKFLOW SECTION */}
+{/* IMPROVED OPERATIONAL WORKFLOW SECTION */}
 {/* ================================================= */}
 
-<section className="relative py-32 overflow-hidden bg-[#071c2b]">
+<section className="relative py-22 md:py-24 overflow-hidden bg-[#071c2b]">
 
-  {/* BACKGROUND IMAGE */}
+  {/* SOFT BACKGROUND */}
 
   <div className="absolute inset-0">
 
     <img
       src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2200&auto=format&fit=crop"
       alt="Clinical Workflow"
-      className="w-full h-full object-cover opacity-10 scale-105"
+      className="w-full h-full object-cover opacity-[0.05]"
     />
 
   </div>
 
   {/* OVERLAY */}
 
-  <div className="absolute inset-0 bg-gradient-to-br from-[#071c2b]/96 via-[#0E3B5F]/92 to-[#071c2b]/96" />
+  <div className="absolute inset-0 bg-gradient-to-b from-[#071c2b] via-[#0E3B5F] to-[#071c2b]" />
 
-  {/* GLOW */}
+  {/* LIGHT GLOW */}
 
-  <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#E58A2F]/10 blur-[120px]" />
-
-  <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#0E3B5F]/20 blur-[120px]" />
+  <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-[#E58A2F]/8 blur-[100px]" />
 
   {/* CONTENT */}
 
@@ -574,15 +572,15 @@ export default function ServicesPage() {
 
     {/* HEADER */}
 
-    <div className="max-w-4xl">
+    <div className="text-center max-w-4xl mx-auto">
 
       {/* LABEL */}
 
-      <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 mb-8">
+      <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/8 backdrop-blur-xl border border-white/10 mb-7">
 
         <div className="w-2 h-2 rounded-full bg-[#E58A2F]" />
 
-        <span className="text-white uppercase tracking-[0.25em] text-[11px] font-medium">
+        <span className="text-white uppercase tracking-[0.22em] text-[11px] font-medium">
           OPERATIONAL WORKFLOW
         </span>
 
@@ -590,10 +588,9 @@ export default function ServicesPage() {
 
       {/* TITLE */}
 
-      <h2 className="text-3xl md:text-4xl lg:text-[5rem] font-bold leading-[0.95] tracking-[-0.05em] text-white">
+      <h2 className="text-4xl md:text-5xl lg:text-[4.5rem] font-bold leading-[0.95] tracking-[-0.04em] text-white">
 
-        End-to-End Clinical
-        Supply Chain
+        Clinical Supply
         <span className="block text-[#E58A2F]">
           Execution Process
         </span>
@@ -602,93 +599,93 @@ export default function ServicesPage() {
 
       {/* DESCRIPTION */}
 
-      <p className="mt-8 text-lg md:text-xl text-white/70 leading-relaxed font-light max-w-3xl">
+      <p className="mt-7 text-lg md:text-xl text-white/68 leading-relaxed font-light">
 
-        Our integrated operational workflow ensures seamless
-        coordination across sourcing, manufacturing,
-        packaging, warehousing, logistics, and global
-        clinical distribution while maintaining compliance,
-        visibility, and supply continuity.
+        A streamlined operational workflow designed to support
+        global clinical trial supply management with precision,
+        compliance, visibility, and end-to-end coordination.
 
       </p>
 
     </div>
 
-    {/* WORKFLOW CARDS */}
+    {/* WORKFLOW */}
 
-    <div className="relative mt-24">
+    <div className="mt-20 relative">
 
-      {/* CONNECTOR LINE */}
+      {/* CONNECTOR */}
 
-      <div className="hidden xl:block absolute top-[50px] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+      <div className="hidden xl:block absolute top-16 left-[8%] right-[8%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-7">
 
         {[
           {
             number: '01',
-            title: 'Planning & Forecasting',
-            text: 'Protocol assessment, demand forecasting, supply planning, and risk analysis.',
+            title: 'Planning',
+            text: 'Clinical forecasting, protocol evaluation, and operational planning.',
           },
           {
             number: '02',
-            title: 'Manufacturing & Sourcing',
-            text: 'Comparator sourcing, GMP manufacturing, ancillary procurement, and vendor coordination.',
+            title: 'Sourcing',
+            text: 'Comparator procurement and global vendor coordination.',
           },
           {
             number: '03',
-            title: 'Packaging & Storage',
-            text: 'Clinical packaging, multilingual labeling, cold-chain storage, and inventory management.',
+            title: 'Packaging',
+            text: 'Clinical labeling, storage, and inventory management.',
           },
           {
             number: '04',
-            title: 'Distribution & Support',
-            text: 'Global logistics, depot distribution, shipment monitoring, and trial support services.',
+            title: 'Distribution',
+            text: 'Global logistics, tracking, and trial support operations.',
           },
         ].map((item, index) => (
 
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
+            transition={{ delay: index * 0.08 }}
             className="group relative"
           >
 
             {/* CARD */}
 
-            <div className="relative h-full overflow-hidden rounded-[32px] bg-white/6 backdrop-blur-xl border border-white/10 p-8 hover:border-[#E58A2F]/30 transition-all duration-500 hover:-translate-y-2">
+            <div className="relative h-full rounded-[28px] bg-white/6 backdrop-blur-xl border border-white/10 p-7 hover:border-[#E58A2F]/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden">
 
-              {/* TOP NUMBER */}
+              {/* TOP */}
 
               <div className="flex items-center justify-between">
 
-                <div className="w-16 h-16 rounded-2xl bg-[#E58A2F] flex items-center justify-center shadow-[0_15px_40px_rgba(229,138,47,0.35)]">
+                {/* NUMBER */}
 
-                  <span className="text-white font-bold text-lg">
+                <div className="w-14 h-14 rounded-2xl bg-[#E58A2F] flex items-center justify-center shadow-[0_12px_35px_rgba(229,138,47,0.3)]">
+
+                  <span className="text-white font-bold">
                     {item.number}
                   </span>
 
                 </div>
 
-                {/* MINI DOT */}
+                {/* DOT */}
 
-                <div className="hidden xl:flex w-4 h-4 rounded-full bg-[#E58A2F] border-4 border-[#071c2b]" />
+                <div className="hidden xl:flex w-3.5 h-3.5 rounded-full bg-[#E58A2F]" />
 
               </div>
 
               {/* CONTENT */}
 
-              <div className="mt-10">
+              <div className="mt-8">
 
-                <h3 className="text-2xl font-bold text-white leading-tight">
+                <h3 className="text-2xl font-bold text-white">
 
                   {item.title}
 
                 </h3>
 
-                <p className="mt-5 text-white/65 leading-relaxed font-light">
+                <p className="mt-4 text-white/62 leading-relaxed font-light text-[15px]">
 
                   {item.text}
 
@@ -696,9 +693,9 @@ export default function ServicesPage() {
 
               </div>
 
-              {/* HOVER GLOW */}
+              {/* HOVER EFFECT */}
 
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#E58A2F]/10 via-transparent to-transparent" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#E58A2F]/10 to-transparent" />
 
             </div>
 
@@ -710,45 +707,34 @@ export default function ServicesPage() {
 
     </div>
 
-    {/* BOTTOM HIGHLIGHT */}
+    {/* BOTTOM STRIP */}
 
-    <div className="grid md:grid-cols-3 gap-8 mt-24">
+    <div className="grid md:grid-cols-3 gap-6 mt-16">
 
       {[
-        {
-          title: 'Global Coordination',
-          text: 'Integrated coordination across multinational clinical supply operations.',
-        },
-        {
-          title: 'Regulatory Compliance',
-          text: 'GDP, GMP, and protocol-driven operational execution standards.',
-        },
-        {
-          title: 'Real-Time Visibility',
-          text: 'Inventory tracking, shipment monitoring, and operational transparency.',
-        },
+        'Global Clinical Coordination',
+        'GDP & GMP Compliance',
+        'Real-Time Operational Visibility',
       ].map((item, index) => (
 
         <motion.div
           key={index}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: index * 0.08 }}
-          className="relative overflow-hidden rounded-[28px] bg-white/5 backdrop-blur-xl border border-white/10 p-8"
+          className="rounded-2xl bg-white/5 border border-white/10 px-6 py-5 backdrop-blur-xl"
         >
 
-          {/* TOP BAR */}
+          <div className="flex items-center gap-4">
 
-          <div className="w-16 h-[3px] bg-[#E58A2F] rounded-full mb-6" />
+            <div className="w-3 h-3 rounded-full bg-[#E58A2F]" />
 
-          <h3 className="text-2xl font-bold text-white">
-            {item.title}
-          </h3>
+            <p className="text-white font-medium">
+              {item}
+            </p>
 
-          <p className="mt-4 text-white/65 leading-relaxed font-light">
-            {item.text}
-          </p>
+          </div>
 
         </motion.div>
 
