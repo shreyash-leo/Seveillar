@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 
@@ -8,433 +9,882 @@ const services = [
   {
     title: 'Clinical Supplies Consultancy & Project Management',
     description:
-      'Strategic planning and end-to-end project management solutions for efficient global clinical supply execution.',
-    points: [
-      'Supply Chain Consultation',
-      'Clinical Supply Strategy',
-      'Risk Management',
-      'Global Trial Support',
-    ],
+      'Strategic planning and end-to-end clinical supply execution for global trials.',
     image:
-      'https://images.unsplash.com/photo-1579165466741-7f35e4755660?q=80&w=1400&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=1600&auto=format&fit=crop',
+    details:
+      'Seveillar provides complete clinical supply consultancy and project management solutions including forecasting, sourcing strategy, inventory planning, vendor coordination, supply chain optimization, and operational execution for multinational clinical studies.',
+    points: [
+      'Global Clinical Trial Planning',
+      'Supply Forecasting',
+      'Vendor Coordination',
+      'Risk Mitigation',
+      'Inventory Planning',
+      'Project Lifecycle Management',
+    ],
   },
+
   {
     title: 'Clinical Supplies Manufacturing',
     description:
-      'cGMP-compliant manufacturing for placebo and active dosage forms supported by qualified facilities.',
+      'cGMP manufacturing support for placebo and active dosage forms.',
+    image:
+      'https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1600&auto=format&fit=crop',
+    details:
+      'Our manufacturing capabilities support placebo manufacturing, over encapsulation, relabeling, and customized clinical dosage preparation under compliant and validated environments.',
     points: [
       'Placebo Manufacturing',
       'Over Encapsulation',
-      'Active Dosage Forms',
-      'cGMP Partnerships',
+      'Clinical Batch Support',
+      'GMP Manufacturing',
+      'Protocol-Based Production',
+      'Regulatory Documentation',
     ],
-    image:
-      'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1400&auto=format&fit=crop',
   },
+
   {
     title: 'Comparator & Ancillary Supplies Sourcing',
     description:
-      'Global sourcing solutions ensuring compliant procurement and uninterrupted clinical trial execution.',
+      'Global comparator sourcing with regulatory and cold-chain compliance.',
+    image:
+      'https://images.unsplash.com/photo-1580281780460-82d277b0e3f8?q=80&w=1600&auto=format&fit=crop',
+    details:
+      'We provide global sourcing and procurement solutions for comparator drugs and ancillary supplies through validated sourcing networks.',
     points: [
-      'Comparator Sourcing',
-      'Ancillary Supplies',
+      'Comparator Drug Sourcing',
       'Cold Chain Handling',
-      'Traceability & Documentation',
+      'Global Vendor Network',
+      'Supply Traceability',
+      'Import/Export Documentation',
+      'Ancillary Procurement',
     ],
-    image:
-      'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?q=80&w=1400&auto=format&fit=crop',
   },
+
   {
-    title: 'Clinical Supplies Blinding, Packaging & Labelling',
+    title: 'Blinding, Packaging & Labelling',
     description:
-      'Customized packaging and labeling solutions maintaining protocol compliance and study blinding integrity.',
+      'Protocol-specific packaging and multilingual labeling solutions.',
+    image:
+      'https://images.unsplash.com/photo-1583912267550-d4bcddf8f7d3?q=80&w=1600&auto=format&fit=crop',
+    details:
+      'Seveillar provides customized blinding, packaging, and labeling solutions aligned with study protocols and regional compliance requirements.',
     points: [
-      'Blinding Strategy',
-      'Primary & Secondary Packaging',
-      'Multi-language Labels',
-      'Protocol Specific Solutions',
+      'Primary Packaging',
+      'Secondary Packaging',
+      'Multilingual Labels',
+      'Booklet Labels',
+      'Blinded Packaging',
+      'Randomization Kits',
     ],
-    image:
-      'https://images.unsplash.com/photo-1583912086096-8c60d75a53f9?q=80&w=1400&auto=format&fit=crop',
   },
+
   {
-    title: 'Storage, Distribution & Global Logistics Management',
+    title: 'Storage, Distribution & Global Logistics',
     description:
-      'Temperature-controlled storage and global logistics ensuring secure clinical supply distribution worldwide.',
+      'Temperature-controlled storage and international clinical logistics.',
+    image:
+      'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=1600&auto=format&fit=crop',
+    details:
+      'Our global logistics infrastructure supports GDP-compliant storage and international distribution of clinical trial materials.',
     points: [
       'Cold Chain Logistics',
       'Global Distribution',
-      'GDP/cGMP Compliance',
-      'Global Depot Network',
+      'Depot Management',
+      'Temperature Monitoring',
+      'GDP Warehousing',
+      'International Shipments',
     ],
-    image:
-      'https://images.unsplash.com/photo-1581595219315-a187dd40c322?q=80&w=1400&auto=format&fit=crop',
   },
+
   {
     title: 'IVRS / IWRS (IRT) Services',
     description:
-      'Customized interactive response technology solutions for patient randomization and supply tracking.',
+      'Advanced IRT systems for randomization and supply management.',
+    image:
+      'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1600&auto=format&fit=crop',
+    details:
+      'Seveillar delivers customized Interactive Response Technology solutions supporting patient randomization and inventory management.',
     points: [
       'Patient Randomization',
+      'Supply Tracking',
+      'IRT Platform Integration',
       'Enrollment Tracking',
-      'Supply Management',
-      '24×7 Global Support',
+      'Cohort Management',
+      '24×7 Technical Support',
     ],
-    image:
-      'https://images.unsplash.com/photo-1580281657527-47f249e8f4df?q=80&w=1400&auto=format&fit=crop',
   },
 ];
 
-const whyChoose = [
-  'USFDA Audited Infrastructure',
-  'QP Certified Operations',
-  'Global Clinical Trial Support',
-  'Temperature Controlled Facilities',
-  'End-to-End Clinical Supply Solutions',
-  'Regulatory & Compliance Expertise',
+const workflow = [
+  'Planning',
+  'Manufacturing',
+  'Sourcing',
+  'Packaging',
+  'Storage',
+  'Distribution',
+  'Trial Support',
 ];
 
-export default function OurServicesPage() {
+export default function ServicesPage() {
+  const [selectedService, setSelectedService] = useState<any>(null);
+
   return (
     <>
       <Navbar />
 
       <main className="bg-white overflow-hidden">
+{/* ================================================= */}
+{/* PREMIUM INTERNAL HERO SECTION */}
+{/* ================================================= */}
 
-        {/* ================= HERO SECTION ================= */}
+<section className="relative overflow-hidden min-h-[68vh] flex items-center pt-28 pb-14 bg-[#071c2b]">
 
-        <section className="relative min-h-screen md:min-h-[90vh] flex items-center overflow-hidden">
+  {/* BACKGROUND IMAGE */}
 
-          {/* Background */}
+  <div className="absolute inset-0">
 
-          <div className="absolute inset-0">
-            <img
-              src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?q=80&w=2000&auto=format&fit=crop"
-              alt="Clinical Services"
-              className="w-full h-full object-cover"
-            />
-          </div>
+    <img
+      src="https://images.unsplash.com/photo-1579165466741-7f35e4755660?q=80&w=2200&auto=format&fit=crop"
+      alt="Clinical Background"
+      className="w-full h-full object-cover scale-105 blur-[2px] opacity-50"
+    />
 
-          {/* Overlay */}
+  </div>
 
-          <div className="absolute inset-0 bg-gradient-to-br from-[#071c2b]/90 via-[#0E3B5F]/80 to-[#800020]/70" />
+  {/* OVERLAY */}
 
-          {/* Glow */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#071c2b]/95 via-[#0E3B5F]/82 to-[#071c2b]/88" />
 
-          <div className="absolute top-40 right-20 w-[450px] h-[450px] bg-[#E58A2F]/20 blur-[140px] rounded-full" />
+  {/* LIGHT GLOW */}
 
-          <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-14 pt-32 md:pt-24 w-full">
+  <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-[#E58A2F]/10 blur-[100px]" />
 
-            <motion.div
-              initial={{ opacity: 0, y: 70 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="max-w-4xl"
+  <div className="absolute bottom-[-30%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[#0E3B5F]/20 blur-[100px]" />
+
+  {/* CONTENT */}
+
+  <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 lg:px-20 w-full">
+
+    <div className="grid lg:grid-cols-[1fr_0.65fr] gap-16 items-center">
+
+      {/* LEFT CONTENT */}
+
+      <div className="pt-10">
+        {/* HEADING */}
+
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+          className="text-3xl md:text-4xl lg:text-[4rem] font-bold leading-[0.92] tracking-[-0.05em] text-white"
+        >
+
+          Integrated Clinical Trial
+          <span className="block text-[#E58A2F] mt-1">
+            Supply Services
+          </span>
+
+        </motion.h1>
+
+        {/* DESCRIPTION */}
+
+        <motion.p
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.1 }}
+          className="mt-8 text-lg md:text-[21px] text-white/75 leading-relaxed font-light max-w-2xl"
+        >
+
+          Seveillar Clinical Supplies Services Pvt. Ltd.
+          delivers integrated clinical supply management
+          solutions supporting pharmaceutical,
+          biotechnology, and CRO organizations globally.
+
+        </motion.p>
+
+        {/* METRICS */}
+
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="flex flex-wrap gap-10 md:gap-16 mt-14"
+        >
+
+          {[
+            ['300+', 'Clinical Studies'],
+            ['25+', 'Countries'],
+            ['1200+', 'Pallet Capacity'],
+            ['24/7', 'Support'],
+          ].map((item, index) => (
+
+            <div
+              key={index}
+              className="relative"
             >
 
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md mb-8">
-                <div className="w-2 h-2 rounded-full bg-[#E58A2F]" />
-                <span className="text-white/90 text-sm tracking-[0.2em] uppercase">
-                  Seveillar Services
-                </span>
-              </div>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#E58A2F]">
+                {item[0]}
+              </h3>
 
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95] tracking-tight">
-                Clinical Supply
-                <span className="block text-[#E58A2F]">
-                  Services
-                </span>
-              </h1>
-
-              <p className="mt-8 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed font-light">
-                Comprehensive end-to-end clinical trial supply management
-                solutions supporting pharmaceutical, biotechnology,
-                and CRO organizations globally.
+              <p className="mt-2 text-white/55 uppercase tracking-[0.15em] text-[11px]">
+                {item[1]}
               </p>
 
-              {/* HERO BUTTONS */}
-
-              <div className="flex flex-col sm:flex-row flex-wrap gap-5 mt-10 w-full max-w-2xl">
-
-                <button className="flex-1 min-w-[220px] bg-[#E58A2F] hover:bg-[#c86f1b] text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-[0_10px_40px_rgba(229,138,47,0.35)] hover:scale-[1.02]">
-                  Explore Capabilities
-                </button>
-
-                <button className="flex-1 min-w-[220px] border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300">
-                  Contact Our Team
-                </button>
-
-              </div>
-
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ================= FLOATING STATS ================= */}
-
-        <section className="relative z-30 -mt-16 md:-mt-20 px-6 md:px-14">
-
-          <div className="max-w-7xl mx-auto">
-
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-
-              {[
-                ['50+', 'Global Trials'],
-                ['25+', 'Countries'],
-                ['100%', 'Compliance Focus'],
-                ['24/7', 'Global Support'],
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="bg-white/90 backdrop-blur-xl rounded-3xl border border-white shadow-[0_10px_50px_rgba(0,0,0,0.08)] p-6 md:p-7 hover:-translate-y-2 transition-all duration-500"
-                >
-                  <div className="w-12 h-1 rounded-full bg-[#E58A2F] mb-5" />
-
-                  <h3 className="text-3xl md:text-4xl font-bold text-[#0E3B5F]">
-                    {item[0]}
-                  </h3>
-
-                  <p className="mt-2 text-gray-500 font-medium text-sm md:text-base">
-                    {item[1]}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ================= INTRO SECTION ================= */}
-
-        <section className="py-20 md:py-28">
-
-          <div className="max-w-7xl mx-auto px-6 md:px-14">
-
-            <div className="grid lg:grid-cols-2 gap-20 items-center">
-
-              {/* LEFT */}
-
-              <motion.div
-                initial={{ opacity: 0, x: -80 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-
-                <div className="inline-block px-4 py-2 rounded-full bg-[#E58A2F]/10 text-[#E58A2F] text-sm tracking-[0.2em] uppercase mb-6">
-                  Global Clinical Expertise
-                </div>
-
-                <h2 className="text-4xl md:text-6xl font-bold text-[#0E3B5F] leading-tight tracking-tight">
-                  Delivering Reliable &
-                  Compliant Clinical
-                  Supply Solutions.
-                </h2>
-
-                <p className="mt-8 text-lg text-gray-600 leading-relaxed font-light">
-                  Seveillar Clinical Supplies Services Pvt. Ltd.
-                  provides premium clinical supply management
-                  solutions tailored for global clinical studies,
-                  ensuring precision, regulatory compliance,
-                  and operational excellence.
-                </p>
-
-                <div className="mt-10 flex flex-wrap gap-4">
-
-                  {whyChoose.map((item, i) => (
-                    <div
-                      key={i}
-                      className="px-5 py-3 rounded-full bg-gray-50 border border-gray-100 text-gray-700 text-sm"
-                    >
-                      ✓ {item}
-                    </div>
-                  ))}
-
-                </div>
-              </motion.div>
-
-              {/* RIGHT IMAGE */}
-
-              <motion.div
-                initial={{ opacity: 0, x: 80 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="relative"
-              >
-
-                <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-[#E58A2F]/10 blur-3xl" />
-
-                <div className="relative overflow-hidden rounded-[40px] shadow-2xl">
-
-                  <img
-                    src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?q=80&w=1400&auto=format&fit=crop"
-                    alt="Clinical Facility"
-                    className="w-full h-[500px] md:h-[650px] object-cover"
-                  />
-
-                </div>
-
-              </motion.div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* ================= SERVICES GRID ================= */}
-
-        <section className="pb-24 md:pb-28">
-
-          <div className="max-w-7xl mx-auto px-6 md:px-14">
-
-            {/* SECTION HEADER */}
-
-            <div className="text-center mb-16 md:mb-20">
-
-              <div className="inline-flex items-center gap-2 bg-[#E58A2F]/10 px-5 py-2 rounded-full mb-6">
-                <div className="w-2 h-2 rounded-full bg-[#E58A2F]" />
-
-                <span className="text-[#E58A2F] uppercase tracking-[0.2em] text-sm">
-                  Service Portfolio
-                </span>
-              </div>
-
-              <h2 className="text-4xl md:text-6xl font-bold text-[#0E3B5F] tracking-tight">
-                Comprehensive Clinical
-                <span className="block text-[#E58A2F]">
-                  Supply Solutions
-                </span>
-              </h2>
-
             </div>
 
-            {/* GRID */}
+          ))}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        </motion.div>
 
-              {services.map((service, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 60 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 }}
-                  className="group h-full"
-                >
+      </div>
 
-                  <div className="flex flex-col h-full bg-white rounded-[32px] border border-gray-100 overflow-hidden shadow-[0_10px_50px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_80px_rgba(0,0,0,0.1)] hover:-translate-y-3 transition-all duration-700">
+      {/* RIGHT IMAGE */}
 
-                    {/* IMAGE */}
+      <motion.div
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        className="flex justify-center lg:justify-end"
+      >
 
-                    <div className="relative h-[250px] overflow-hidden flex-shrink-0">
+        <div className="relative">
 
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
+          {/* GLOW */}
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-[#E58A2F]/10 blur-[40px] rounded-full" />
 
-                      <div className="absolute bottom-5 left-5">
+          {/* IMAGE */}
 
-                        <span className="inline-flex px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs uppercase tracking-[0.2em]">
-                          Clinical Services
-                        </span>
-
-                      </div>
-                    </div>
-
-                    {/* CONTENT */}
-
-                    <div className="flex flex-col flex-1 p-7">
-
-                      <div>
-
-                        <h3 className="text-2xl font-bold text-[#0E3B5F] leading-tight min-h-[90px]">
-                          {service.title}
-                        </h3>
-
-                        <p className="mt-5 text-gray-600 leading-relaxed text-[15px]">
-                          {service.description}
-                        </p>
-
-                      </div>
-
-                      {/* TAGS */}
-
-                      <div className="mt-6 flex flex-wrap gap-2">
-
-                        {service.points.map((point, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-2 rounded-full bg-gray-50 text-gray-600 text-xs border border-gray-100"
-                          >
-                            {point}
-                          </span>
-                        ))}
-
-                      </div>
-
-                      {/* BUTTON */}
-
-                      <div className="mt-auto pt-8">
-
-                        <button className="w-full flex items-center justify-center gap-2 bg-[#0E3B5F] hover:bg-[#E58A2F] text-white py-4 rounded-2xl font-semibold transition-all duration-300 group/btn shadow-lg hover:shadow-xl">
-
-                          Learn More
-
-                          <svg
-                            className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M17 8l4 4m0 0l-4 4m4-4H3"
-                            />
-                          </svg>
-
-                        </button>
-
-                      </div>
-
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-
-            </div>
-          </div>
-        </section>
-
-        {/* ================= COMPANY PROMISE ================= */}
-
-        <section className="relative py-24 md:py-32 overflow-hidden">
-
-          {/* BACKGROUND */}
-
-          <div className="absolute inset-0">
+          <div className="relative w-[220px] md:w-[280px] aspect-[9/13] rounded-[34px] overflow-hidden border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
 
             <img
-              src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2000&auto=format&fit=crop"
-              alt="Promise"
+              src="https://images.unsplash.com/photo-1579165466741-7f35e4755660?q=80&w=1400&auto=format&fit=crop"
+              alt="Clinical Research"
               className="w-full h-full object-cover"
+            />
+
+            {/* OVERLAY */}
+
+            <div className="absolute inset-0 bg-gradient-to-t from-[#071c2b]/45 to-transparent" />
+
+          </div>
+
+        </div>
+
+      </motion.div>
+
+    </div>
+
+  </div>
+
+</section>
+
+        {/* ================================================= */}
+{/* SERVICES OVERVIEW SECTION */}
+{/* ================================================= */}
+
+<section className="relative py-28 bg-white overflow-hidden">
+
+  {/* SOFT GLOW */}
+
+  <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#E58A2F]/5 blur-[120px]" />
+
+  <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 lg:px-20">
+
+    <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-20 items-center">
+
+      {/* LEFT SIDE */}
+
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+
+        {/* LABEL */}
+
+        <div className="inline-flex items-center gap-3 mb-6">
+
+          <div className="w-12 h-[2px] bg-[#E58A2F]" />
+
+          <span className="text-[#E58A2F] uppercase tracking-[0.25em] text-xs font-medium">
+            SERVICE OVERVIEW
+          </span>
+
+        </div>
+
+        {/* TITLE */}
+
+        <h2 className="text-5xl md:text-6xl font-bold text-[#0E3B5F] leading-[1] tracking-tight">
+
+          Delivering Reliable
+          Clinical Supply
+          <span className="block text-[#800020]">
+            Solutions Worldwide
+          </span>
+
+        </h2>
+
+      </motion.div>
+
+      {/* RIGHT SIDE */}
+
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.1 }}
+      >
+
+        <p className="text-xl text-gray-600 leading-relaxed font-light">
+
+          Seveillar Clinical Supplies Services Pvt. Ltd.
+          supports pharmaceutical, biotechnology,
+          and CRO organizations with integrated
+          clinical trial supply management services
+          designed around compliance, scalability,
+          and operational precision.
+
+        </p>
+
+        <p className="mt-8 text-lg text-gray-600 leading-relaxed font-light">
+
+          Our expertise spans comparator sourcing,
+          packaging & labeling, temperature-controlled
+          logistics, warehousing, manufacturing support,
+          IRT systems, and end-to-end supply chain
+          coordination for multinational clinical studies.
+
+        </p>
+
+        {/* FEATURES */}
+
+        <div className="grid sm:grid-cols-2 gap-5 mt-10">
+
+          {[
+            'Global Clinical Supply Operations',
+            'GDP & GMP Compliant Processes',
+            'Temperature-Controlled Logistics',
+            'End-to-End Trial Support',
+          ].map((item, index) => (
+
+            <div
+              key={index}
+              className="flex items-center gap-3"
+            >
+
+              <div className="w-8 h-8 rounded-lg bg-[#E58A2F]/10 flex items-center justify-center">
+
+                <svg
+                  className="w-4 h-4 text-[#E58A2F]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+
+              </div>
+
+              <p className="text-[#0E3B5F] font-medium">
+                {item}
+              </p>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </motion.div>
+
+    </div>
+
+  </div>
+
+</section>
+
+        {/* ================================================= */}
+{/* PREMIUM SERVICES GRID */}
+{/* ================================================= */}
+
+<section className="py-28 bg-white">
+
+  <div className="max-w-7xl mx-auto px-6 md:px-16 lg:px-20">
+
+    {/* HEADER */}
+
+    <div className="mb-20">
+
+      <div className="inline-flex items-center gap-3 mb-6">
+
+        <div className="w-12 h-[2px] bg-[#E58A2F]" />
+
+        <span className="text-[#E58A2F] uppercase tracking-[0.25em] text-xs font-medium">
+          SERVICE PORTFOLIO
+        </span>
+
+      </div>
+
+      <h2 className="text-5xl md:text-6xl font-bold text-[#0E3B5F] tracking-tight">
+        Clinical Supply
+        <span className="block text-[#800020]">
+          Capabilities
+        </span>
+      </h2>
+
+    </div>
+
+    {/* EQUAL GRID */}
+
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+      {services.map((service, index) => (
+
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.08 }}
+          onClick={() => setSelectedService(service)}
+          className="group relative overflow-hidden rounded-[28px] bg-[#071c2b] h-[620px] cursor-pointer"
+        >
+
+          {/* IMAGE */}
+
+          <div className="absolute inset-0 overflow-hidden">
+
+            <img
+              src={service.image}
+              alt={service.title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
 
           </div>
 
           {/* OVERLAY */}
 
-          <div className="absolute inset-0 bg-[#071c2b]/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#071c2b] via-[#071c2b]/70 to-transparent" />
+
+          {/* GLOW */}
+
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-[#E58A2F]/20 to-transparent" />
 
           {/* CONTENT */}
+
+          <div className="relative z-10 flex flex-col justify-end h-full p-8">
+
+            {/* LABEL */}
+
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-4 py-2 w-fit mb-6">
+
+              <div className="w-2 h-2 rounded-full bg-[#E58A2F]" />
+
+              <span className="text-white uppercase tracking-[0.2em] text-[10px]">
+                Clinical Services
+              </span>
+
+            </div>
+
+            {/* TITLE */}
+
+            <h3 className="text-3xl font-bold text-white leading-tight">
+              {service.title}
+            </h3>
+
+            {/* DESC */}
+
+            <p className="mt-5 text-white/70 text-base leading-relaxed">
+              {service.description}
+            </p>
+
+            {/* CTA */}
+
+            <div className="mt-8 flex items-center gap-3 text-[#E58A2F] font-semibold">
+
+              <span>Learn More</span>
+
+              <svg
+                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+
+            </div>
+
+          </div>
+
+        </motion.div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
+       {/* ================================================= */}
+{/* PREMIUM OPERATIONAL WORKFLOW SECTION */}
+{/* ================================================= */}
+
+<section className="relative py-32 overflow-hidden bg-[#071c2b]">
+
+  {/* BACKGROUND IMAGE */}
+
+  <div className="absolute inset-0">
+
+    <img
+      src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2200&auto=format&fit=crop"
+      alt="Clinical Workflow"
+      className="w-full h-full object-cover opacity-10 scale-105"
+    />
+
+  </div>
+
+  {/* OVERLAY */}
+
+  <div className="absolute inset-0 bg-gradient-to-br from-[#071c2b]/96 via-[#0E3B5F]/92 to-[#071c2b]/96" />
+
+  {/* GLOW */}
+
+  <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-[#E58A2F]/10 blur-[120px]" />
+
+  <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#0E3B5F]/20 blur-[120px]" />
+
+  {/* CONTENT */}
+
+  <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 lg:px-20">
+
+    {/* HEADER */}
+
+    <div className="max-w-4xl">
+
+      {/* LABEL */}
+
+      <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 mb-8">
+
+        <div className="w-2 h-2 rounded-full bg-[#E58A2F]" />
+
+        <span className="text-white uppercase tracking-[0.25em] text-[11px] font-medium">
+          OPERATIONAL WORKFLOW
+        </span>
+
+      </div>
+
+      {/* TITLE */}
+
+      <h2 className="text-3xl md:text-4xl lg:text-[5rem] font-bold leading-[0.95] tracking-[-0.05em] text-white">
+
+        End-to-End Clinical
+        Supply Chain
+        <span className="block text-[#E58A2F]">
+          Execution Process
+        </span>
+
+      </h2>
+
+      {/* DESCRIPTION */}
+
+      <p className="mt-8 text-lg md:text-xl text-white/70 leading-relaxed font-light max-w-3xl">
+
+        Our integrated operational workflow ensures seamless
+        coordination across sourcing, manufacturing,
+        packaging, warehousing, logistics, and global
+        clinical distribution while maintaining compliance,
+        visibility, and supply continuity.
+
+      </p>
+
+    </div>
+
+    {/* WORKFLOW CARDS */}
+
+    <div className="relative mt-24">
+
+      {/* CONNECTOR LINE */}
+
+      <div className="hidden xl:block absolute top-[50px] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+
+        {[
+          {
+            number: '01',
+            title: 'Planning & Forecasting',
+            text: 'Protocol assessment, demand forecasting, supply planning, and risk analysis.',
+          },
+          {
+            number: '02',
+            title: 'Manufacturing & Sourcing',
+            text: 'Comparator sourcing, GMP manufacturing, ancillary procurement, and vendor coordination.',
+          },
+          {
+            number: '03',
+            title: 'Packaging & Storage',
+            text: 'Clinical packaging, multilingual labeling, cold-chain storage, and inventory management.',
+          },
+          {
+            number: '04',
+            title: 'Distribution & Support',
+            text: 'Global logistics, depot distribution, shipment monitoring, and trial support services.',
+          },
+        ].map((item, index) => (
+
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className="group relative"
+          >
+
+            {/* CARD */}
+
+            <div className="relative h-full overflow-hidden rounded-[32px] bg-white/6 backdrop-blur-xl border border-white/10 p-8 hover:border-[#E58A2F]/30 transition-all duration-500 hover:-translate-y-2">
+
+              {/* TOP NUMBER */}
+
+              <div className="flex items-center justify-between">
+
+                <div className="w-16 h-16 rounded-2xl bg-[#E58A2F] flex items-center justify-center shadow-[0_15px_40px_rgba(229,138,47,0.35)]">
+
+                  <span className="text-white font-bold text-lg">
+                    {item.number}
+                  </span>
+
+                </div>
+
+                {/* MINI DOT */}
+
+                <div className="hidden xl:flex w-4 h-4 rounded-full bg-[#E58A2F] border-4 border-[#071c2b]" />
+
+              </div>
+
+              {/* CONTENT */}
+
+              <div className="mt-10">
+
+                <h3 className="text-2xl font-bold text-white leading-tight">
+
+                  {item.title}
+
+                </h3>
+
+                <p className="mt-5 text-white/65 leading-relaxed font-light">
+
+                  {item.text}
+
+                </p>
+
+              </div>
+
+              {/* HOVER GLOW */}
+
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#E58A2F]/10 via-transparent to-transparent" />
+
+            </div>
+
+          </motion.div>
+
+        ))}
+
+      </div>
+
+    </div>
+
+    {/* BOTTOM HIGHLIGHT */}
+
+    <div className="grid md:grid-cols-3 gap-8 mt-24">
+
+      {[
+        {
+          title: 'Global Coordination',
+          text: 'Integrated coordination across multinational clinical supply operations.',
+        },
+        {
+          title: 'Regulatory Compliance',
+          text: 'GDP, GMP, and protocol-driven operational execution standards.',
+        },
+        {
+          title: 'Real-Time Visibility',
+          text: 'Inventory tracking, shipment monitoring, and operational transparency.',
+        },
+      ].map((item, index) => (
+
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.08 }}
+          className="relative overflow-hidden rounded-[28px] bg-white/5 backdrop-blur-xl border border-white/10 p-8"
+        >
+
+          {/* TOP BAR */}
+
+          <div className="w-16 h-[3px] bg-[#E58A2F] rounded-full mb-6" />
+
+          <h3 className="text-2xl font-bold text-white">
+            {item.title}
+          </h3>
+
+          <p className="mt-4 text-white/65 leading-relaxed font-light">
+            {item.text}
+          </p>
+
+        </motion.div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</section>
+
+        {/* ================================================= */}
+        {/* COMPLIANCE */}
+        {/* ================================================= */}
+
+        <section className="relative py-32 bg-[#f8fafc] overflow-hidden">
+
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#E58A2F]/5 blur-[120px]" />
+
+          <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 lg:px-20">
+
+            <div className="max-w-4xl">
+
+              <div className="inline-flex items-center gap-3 mb-6">
+
+                <div className="w-12 h-[2px] bg-[#E58A2F]" />
+
+                <span className="text-[#E58A2F] uppercase tracking-[0.25em] text-xs font-medium">
+                  COMPLIANCE & QUALITY
+                </span>
+
+              </div>
+
+              <h2 className="text-5xl md:text-7xl font-bold text-[#0E3B5F] leading-[1] tracking-tight">
+
+                Built Around
+                Global Regulatory
+                <span className="block text-[#800020]">
+                  Standards
+                </span>
+
+              </h2>
+
+            </div>
+
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mt-20">
+
+              {[
+                {
+                  title: 'USFDA Aligned Operations',
+                  text: 'Operational systems aligned with global pharmaceutical regulatory expectations.',
+                },
+                {
+                  title: 'GDP & GMP Compliance',
+                  text: 'Clinical storage, handling, packaging, and distribution under global standards.',
+                },
+                {
+                  title: 'Cold Chain Validation',
+                  text: 'Validated temperature-controlled logistics supporting critical clinical products.',
+                },
+                {
+                  title: 'Quality Management Systems',
+                  text: 'Traceability, audit readiness, documentation control, and operational quality assurance.',
+                },
+                {
+                  title: '21 CFR Part 11',
+                  text: 'Technology and documentation systems aligned with electronic compliance standards.',
+                },
+                {
+                  title: 'Global Regulatory Support',
+                  text: 'Regional documentation, import/export support, and protocol-specific compliance.',
+                },
+              ].map((item, index) => (
+
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08 }}
+                  className="bg-white rounded-[32px] p-8 border border-gray-100 shadow-lg hover:-translate-y-2 transition-all duration-500"
+                >
+
+                  <div className="w-16 h-16 rounded-2xl bg-[#E58A2F]/10 flex items-center justify-center mb-8">
+
+                    <svg
+                      className="w-8 h-8 text-[#E58A2F]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-[#0E3B5F] leading-tight">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-5 text-gray-600 leading-relaxed text-[15px]">
+                    {item.text}
+                  </p>
+
+                </motion.div>
+
+              ))}
+
+            </div>
+
+          </div>
+
+        </section>
+
+        {/* ================================================= */}
+        {/* CTA */}
+        {/* ================================================= */}
+
+        <section className="relative py-32 overflow-hidden">
+
+          <div className="absolute inset-0">
+
+            <img
+              src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2200&auto=format&fit=crop"
+              alt=""
+              className="w-full h-full object-cover"
+            />
+
+          </div>
+
+          <div className="absolute inset-0 bg-[#071c2b]/85" />
 
           <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-14 text-center">
 
@@ -443,27 +893,213 @@ export default function OurServicesPage() {
               <div className="w-2 h-2 rounded-full bg-[#E58A2F]" />
 
               <span className="text-white uppercase tracking-[0.2em] text-sm">
-                Our Commitment
+                Global Clinical Support
               </span>
 
             </div>
 
-            <h2 className="text-4xl md:text-7xl font-bold text-white leading-tight tracking-tight">
-              The Company Promise
+            <h2 className="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight">
+
+              Ready To Optimize
+              <span className="block text-[#E58A2F]">
+                Your Clinical Supply Chain?
+              </span>
+
             </h2>
 
-            <div className="w-32 h-[2px] bg-[#E58A2F] mx-auto my-10" />
+            <p className="mt-8 text-lg md:text-xl text-white/75 leading-relaxed font-light max-w-3xl mx-auto">
 
-            <p className="text-lg md:text-xl text-white/75 leading-relaxed font-light max-w-3xl mx-auto">
-              At Seveillar Clinical Supplies Services,
-              we are committed to delivering reliable,
-              compliant, and patient-focused clinical supply
-              solutions that support successful clinical trials
-              across global regions.
+              Partner with Seveillar Clinical Supplies Services
+              for compliant, scalable, and globally integrated
+              clinical trial supply solutions.
+
             </p>
 
           </div>
+
         </section>
+
+       {/* ================================================= */}
+{/* PREMIUM POPUP MODAL */}
+{/* ================================================= */}
+
+<AnimatePresence>
+
+  {selectedService && (
+
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[200] bg-black/70 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
+    >
+
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0, y: 40 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.95, opacity: 0, y: 40 }}
+        transition={{ duration: 0.3 }}
+        className="relative bg-white rounded-[20px] overflow-hidden w-full max-w-5xl max-h-[88vh] shadow-[0_30px_100px_rgba(0,0,0,0.45)]"
+      >
+
+        {/* CUSTOM SCROLLBAR */}
+
+        <style jsx>{`
+          .popup-scroll::-webkit-scrollbar {
+            width: 5px;
+          }
+
+          .popup-scroll::-webkit-scrollbar-track {
+            background: transparent;
+          }
+
+          .popup-scroll::-webkit-scrollbar-thumb {
+            background: rgba(14, 59, 95, 0.22);
+            border-radius: 20px;
+          }
+
+          .popup-scroll::-webkit-scrollbar-thumb:hover {
+            background: rgba(229, 138, 47, 0.5);
+          }
+        `}</style>
+
+        {/* CLOSE BUTTON */}
+
+        <button
+          onClick={() => setSelectedService(null)}
+          className="absolute top-5 right-5 z-30 w-10 h-10 rounded-full bg-black/50 backdrop-blur-md text-white flex items-center justify-center hover:bg-[#E58A2F] transition-all duration-300"
+        >
+          ✕
+        </button>
+
+        {/* SCROLL AREA */}
+
+        <div className="popup-scroll overflow-y-auto max-h-[88vh]">
+
+          {/* IMAGE */}
+
+          <div className="relative h-[280px] md:h-[340px] overflow-hidden">
+
+            <img
+              src={selectedService.image}
+              alt={selectedService.title}
+              className="w-full h-full object-cover"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+            {/* TITLE */}
+
+            <div className="absolute bottom-8 left-8 md:left-10 right-8">
+
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-4 py-2 mb-5">
+
+                <div className="w-2 h-2 rounded-full bg-[#E58A2F]" />
+
+                <span className="text-white uppercase tracking-[0.2em] text-[10px]">
+                  Clinical Services
+                </span>
+
+              </div>
+
+              <h2 className="text-3xl md:text-5xl font-bold text-white leading-[1.05] max-w-3xl">
+                {selectedService.title}
+              </h2>
+
+            </div>
+
+          </div>
+
+          {/* CONTENT */}
+
+          <div className="p-8 md:p-12">
+
+            {/* DESCRIPTION */}
+
+            <div className="max-w-4xl">
+
+              <p className="text-lg text-gray-600 leading-relaxed font-light">
+
+                {selectedService.details}
+
+              </p>
+
+              <p className="mt-6 text-lg text-gray-600 leading-relaxed font-light">
+
+                Our operational teams work closely with sponsors,
+                CROs, manufacturing partners, and logistics providers
+                to ensure uninterrupted clinical supply execution
+                across all study phases while maintaining regulatory
+                compliance, product integrity, and temperature-controlled
+                distribution standards.
+
+              </p>
+
+              <p className="mt-6 text-lg text-gray-600 leading-relaxed font-light">
+
+                Seveillar focuses on scalable infrastructure,
+                process-driven execution, risk mitigation,
+                inventory visibility, and global coordination
+                to support complex international clinical trial operations.
+
+              </p>
+
+            </div>
+
+            {/* FEATURES */}
+
+            <div className="grid md:grid-cols-2 gap-5 mt-14">
+
+              {selectedService.points.map((point: string, idx: number) => (
+
+                <div
+                  key={idx}
+                  className="flex items-start gap-4 p-5 rounded-[18px] bg-[#f8fafc] border border-gray-100 hover:border-[#E58A2F]/30 transition-all duration-300"
+                >
+
+                  {/* ICON */}
+
+                  <div className="w-10 h-10 rounded-xl bg-[#E58A2F]/10 flex items-center justify-center flex-shrink-0">
+
+                    <svg
+                      className="w-5 h-5 text-[#E58A2F]"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+
+                  </div>
+
+                  {/* TEXT */}
+
+                  <p className="text-[#0E3B5F] font-medium leading-relaxed">
+                    {point}
+                  </p>
+
+                </div>
+
+              ))}
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </motion.div>
+
+    </motion.div>
+
+  )}
+
+</AnimatePresence>
 
       </main>
 
