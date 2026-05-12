@@ -214,7 +214,6 @@ export default function ServicesPage() {
           {[
             ['300+', 'Clinical Studies'],
             ['25+', 'Countries'],
-            ['1200+', 'Pallet Capacity'],
             ['24/7', 'Support'],
           ].map((item, index) => (
 
