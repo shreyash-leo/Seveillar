@@ -92,8 +92,8 @@ export default function Navbar() {
               <img
                 src="/logo.png"
                 alt="Seveillar Logo"
-                className={`object-contain transition-all duration-500 ${
-                  isScrolled
+                className={`object-contain transition-all duration-500 scale-125 origin-left ${
+                   isScrolled
                     ? 'h-16 md:h-20'
                     : 'h-20 md:h-24'
                 }`}

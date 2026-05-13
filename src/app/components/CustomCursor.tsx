@@ -41,12 +41,10 @@ export default function CustomCursor() {
     y: mousePosition.y - 8,
   }}
   transition={{
-    type: "spring",
-    stiffness: 500,
-    damping: 28,
-    mass: 0.5,
+    duration: 0.08,
+    ease: "linear",
   }}
-  className="fixed top-0 left-0 h-4 w-4 rounded-full bg-orange-500 pointer-events-none z-[9999] mix-blend-difference"
+  className="fixed top-0 left-0 h-4 w-4 rounded-full bg-orange-500 pointer-events-none z-[9999]"
 />
     </div>
   );
