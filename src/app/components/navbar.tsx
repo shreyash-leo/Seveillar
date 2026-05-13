@@ -54,7 +54,7 @@ export default function Navbar() {
     { name: 'About Us', href: '/about' },
     { name: 'Our Services', href: '/services' },
     { name: 'Facility & Infrastructure', href: '/facility' },
-    { name: 'Why Us', href: '/why-us' },
+    { name: 'Why Us', href: '/whyus' },
     { name: 'Contact Us', href: '/contact' },
   ];
 

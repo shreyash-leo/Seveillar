@@ -3,9 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [activeTimeline, setActiveTimeline] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const worldMapRef = useRef<HTMLDivElement>(null);
@@ -136,11 +138,42 @@ export default function Home() {
     { number: "100%", label: "Compliance Focus" },
   ];
 
-  const floatingPills = [
-    "✓ 2015 Founded",
-    "✓ USFDA Audited", 
-    "✓ Global Trials",
-    "✓ QP Certified"
+  const timelineData = [
+    {
+      year: "2015",
+      title: "Company Founded",
+      short: "Seveillar established its foundation in clinical trial supply management.",
+      full: "Founded in 2015, Seveillar Clinical Supplies Services began operations focused on global clinical supply chain management, comparator sourcing, packaging, labeling, and logistics support.",
+      image: "https://images.unsplash.com/photo-1581092918484-8313b87f4d2d?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      year: "2017",
+      title: "Global Sourcing Expansion",
+      short: "Expanded comparator sourcing and global wholesaler partnerships.",
+      full: "Established a strong global network of approved wholesalers and distributors to support multinational clinical studies efficiently.",
+      image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      year: "2019",
+      title: "Cold Chain Infrastructure",
+      short: "Expanded temperature-controlled storage and logistics systems.",
+      full: "Developed advanced infrastructure supporting 15°C to 25°C, 2°C to 8°C, -20°C and -80°C storage and global distribution operations.",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      year: "2021",
+      title: "Global Clinical Trial Support",
+      short: "Successfully supported multi-country global clinical studies.",
+      full: "Expanded operational capabilities to manage packaging, labeling, storage, logistics, depot management, and global supply chain execution.",
+      image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      year: "2023",
+      title: "Advanced IRT Solutions",
+      short: "Implemented scalable IVRS/IWRS clinical trial systems.",
+      full: "Introduced advanced 21 CFR Part 11 compliant IRT platforms supporting randomization, drug supply management, cohort tracking, and study workflows.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+    },
   ];
 
   return (
@@ -360,24 +393,22 @@ export default function Home() {
             </div>
 
             {/* Floating Pills */}
-<div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-20 w-full px-4">
-  <div className="flex flex-wrap justify-center items-center gap-3 max-w-4xl mx-auto">
-
-    {[
-      "2015 Founded",
-      "USFDA Audited",
-      "Global Trials",
-      "QP Certified",
-    ].map((item, index) => (
-      <span
-        key={index}
-        className="flex items-center justify-center min-w-[180px] h-12 bg-white/95 backdrop-blur-md text-[#800020] text-sm font-medium px-5 rounded-full shadow-lg border border-gray-100 tracking-wide whitespace-nowrap">
-        ✓ {item}
-      </span>
-    ))}
-
-  </div>
-</div>
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-20 w-full px-4">
+              <div className="flex flex-wrap justify-center items-center gap-3 max-w-4xl mx-auto">
+                {[
+                  "2015 Founded",
+                  "USFDA Audited",
+                  "Global Trials",
+                  "QP Certified",
+                ].map((item, index) => (
+                  <span
+                    key={index}
+                    className="flex items-center justify-center min-w-[180px] h-12 bg-white/95 backdrop-blur-md text-[#800020] text-sm font-medium px-5 rounded-full shadow-lg border border-gray-100 tracking-wide whitespace-nowrap">
+                    ✓ {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Editorial Text Block + Metrics - Minimal, spacious */}
@@ -441,7 +472,7 @@ export default function Home() {
         </div>
       </section>
 
-                {/* ========== PREMIUM SERVICES OVERVIEW - BENTO GRID ========== */}
+      {/* ========== PREMIUM SERVICES OVERVIEW - BENTO GRID ========== */}
       <section className="py-24 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
           
@@ -679,514 +710,339 @@ export default function Home() {
       </section>
 
       {/* ================= FACILITY INFRASTRUCTURE SECTION ================= */}
-<section className="py-24 bg-[#f7f4f1] relative overflow-hidden">
-  
-  {/* Top Accent Line */}
-  <div className="absolute top-14 left-0 w-full h-5 bg-[#E86A3A]"></div>
-
-  <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-14 relative z-10">
-
-    {/* Heading */}
-    <div className="flex justify-center mb-16">
-      <div className="bg-[#E8923A] px-12 md:px-24 py-5 rounded-full shadow-lg">
-        <h2 className="text-4xl md:text-5xl font-bold text-white tracking-wide">
-          FACILITY
-        </h2>
-      </div>
-    </div>
-
-    {/* Facility Cards */}
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-
-      {/* Card 1 */}
-      <div className="bg-white rounded-[38px] border border-[#EBC9A8] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+      <section className="py-24 bg-[#f7f4f1] relative overflow-hidden">
         
-        <div className="bg-[#EBC9A8] px-6 pt-10 pb-20 relative">
-          <h3 className="text-3xl font-bold text-[#4A2D23] text-center leading-tight">
-            Strategic Location
-          </h3>
+        {/* Top Accent Line */}
+        <div className="absolute top-14 left-0 w-full h-5 bg-[#E86A3A]"></div>
 
-          {/* Icon */}
-          <div className="absolute left-1/2 -bottom-12 -translate-x-1/2 w-24 h-24 rounded-full bg-white border-2 border-[#EBC9A8] flex items-center justify-center shadow-md">
-            <svg className="w-10 h-10 text-[#E86A3A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-            </svg>
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-14 relative z-10">
+
+          {/* Heading */}
+          <div className="flex justify-center mb-16">
+            <div className="bg-[#E8923A] px-12 md:px-24 py-5 rounded-full shadow-lg">
+              <h2 className="text-4xl md:text-5xl font-bold text-white tracking-wide">
+                FACILITY
+              </h2>
+            </div>
           </div>
-        </div>
 
-        <div className="px-7 pt-20 pb-8">
-          <div className="h-px bg-[#EBC9A8] mb-7"></div>
+          {/* Facility Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
 
-          <ul className="space-y-5 text-gray-700 text-[15px] leading-relaxed">
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#D39A6D] mt-2"></span>
-              Located in 5 Star MIDC (Industrial Zone), Ranjangaon, Pune-India
-            </li>
+            {/* Card 1 */}
+            <div className="bg-white rounded-[38px] border border-[#EBC9A8] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+              
+              <div className="bg-[#EBC9A8] px-6 pt-10 pb-20 relative">
+                <h3 className="text-3xl font-bold text-[#4A2D23] text-center leading-tight">
+                  Strategic Location
+                </h3>
 
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#D39A6D] mt-2"></span>
-              Facility is well connected to Road & Air Route
-            </li>
-
-            <li className="text-[#2D6BB2] font-semibold pt-2">
-              Connectivity:
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#D39A6D] mt-2"></span>
-              Connected to Airport by Four Way National Highway
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#D39A6D] mt-2"></span>
-              50 Km from Pune Airport
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#D39A6D] mt-2"></span>
-              180 Km from Mumbai Airport
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Card 2 */}
-      <div className="bg-white rounded-[38px] border border-[#B8D7CD] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-
-        <div className="bg-[#B8D7CD] px-6 pt-10 pb-20 relative">
-          <h3 className="text-3xl font-bold text-[#214C44] text-center leading-tight">
-            Packaging Areas
-          </h3>
-
-          <div className="absolute left-1/2 -bottom-12 -translate-x-1/2 w-24 h-24 rounded-full bg-white border-2 border-[#B8D7CD] flex items-center justify-center shadow-md">
-            <svg className="w-10 h-10 text-[#00A651]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"/>
-            </svg>
-          </div>
-        </div>
-
-        <div className="px-7 pt-20 pb-8">
-          <div className="h-px bg-[#B8D7CD] mb-7"></div>
-
-          <ul className="space-y-5 text-gray-700 text-[15px] leading-relaxed">
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#9BC8BB] mt-2"></span>
-              2 Primary & Secondary Packaging High Class Maintained GMP Suites
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#9BC8BB] mt-2"></span>
-              Clean Room ISO Class 8 for Primary Packaging Operations
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#9BC8BB] mt-2"></span>
-              cGMP Grade Equipments for Packaging Operations
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#9BC8BB] mt-2"></span>
-              Separate Provision for Personnel & Material Entry in Clean Room
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#9BC8BB] mt-2"></span>
-              Provision of Alarms for Notifications in Case of Deviations
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Card 3 */}
-      <div className="bg-white rounded-[38px] border border-[#E7D38A] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-
-        <div className="bg-[#EEDB9C] px-6 pt-10 pb-20 relative">
-          <h3 className="text-3xl font-bold text-[#4E4318] text-center leading-tight">
-            Storage & Distribution
-          </h3>
-
-          <div className="absolute left-1/2 -bottom-12 -translate-x-1/2 w-24 h-24 rounded-full bg-white border-2 border-[#E7D38A] flex items-center justify-center shadow-md">
-            <svg className="w-10 h-10 text-[#7C6DB0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 7h18M5 7v13h14V7M9 11h6M9 15h4"/>
-            </svg>
-          </div>
-        </div>
-
-        <div className="px-7 pt-20 pb-8">
-          <div className="h-px bg-[#E7D38A] mb-7"></div>
-
-          <ul className="space-y-5 text-gray-700 text-[15px] leading-relaxed">
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#E7D38A] mt-2"></span>
-              12000 Sq.Ft dedicated warehouse & distribution areas
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#E7D38A] mt-2"></span>
-              Dedicated cGMP, GDP & GWP compliant storage facilities
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#E7D38A] mt-2"></span>
-              Storage available at 15°C to 25°C, 2°C to 8°C, -15°C to -25°C & -80°C
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#E7D38A] mt-2"></span>
-              Restricted & controlled access to storage areas
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#E7D38A] mt-2"></span>
-              21 CFR Part 11 compliant monitoring & acquisition system
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Card 4 */}
-      <div className="bg-white rounded-[38px] border border-[#E9CFC7] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-
-        <div className="bg-[#E9CFC7] px-6 pt-10 pb-20 relative">
-          <h3 className="text-3xl font-bold text-[#5B3C37] text-center leading-tight">
-            Monitoring & Backup
-          </h3>
-
-          <div className="absolute left-1/2 -bottom-12 -translate-x-1/2 w-24 h-24 rounded-full bg-white border-2 border-[#E9CFC7] flex items-center justify-center shadow-md">
-            <svg className="w-10 h-10 text-[#E86A3A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 17v-6m6 6V7m-9 10h12M5 21h14"/>
-            </svg>
-          </div>
-        </div>
-
-        <div className="px-7 pt-20 pb-8">
-          <div className="h-px bg-[#E9CFC7] mb-7"></div>
-
-          <ul className="space-y-5 text-gray-700 text-[15px] leading-relaxed">
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#E9CFC7] mt-2"></span>
-              DG backup to all cold rooms & critical AHU’s
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#E9CFC7] mt-2"></span>
-              100% standby for deep freezer & critical storage areas
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#E9CFC7] mt-2"></span>
-              24×7 surveillance through CCTV cameras
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#E9CFC7] mt-2"></span>
-              Fire alarm system
-            </li>
-
-            <li className="flex gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#E9CFC7] mt-2"></span>
-              Fire fighting & sprinkler system
-            </li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-{/* ================= MODERN COMPANY TIMELINE ================= */}
-<section className="relative py-28 bg-[#f6f6f7] overflow-hidden">
-
-  <div className="max-w-[1700px] mx-auto px-6 md:px-10 lg:px-16">
-
-    {/* Header */}
-    <div className="text-center mb-20">
-
-      <div className="inline-flex items-center gap-2 border border-[#F97316]/30 px-5 py-2 rounded-full mb-6 bg-white">
-        <span className="w-2 h-2 rounded-full bg-[#F97316]"></span>
-
-        <span className="text-[#F97316] text-sm font-semibold tracking-[0.2em] uppercase">
-          Our Journey
-        </span>
-      </div>
-
-      <h2 className="text-5xl md:text-7xl font-black text-[#1F2940] tracking-tight">
-        COMPANY TIMELINE
-      </h2>
-
-      <div className="flex items-center justify-center gap-4 mt-6">
-        <div className="w-20 h-[2px] bg-gray-300"></div>
-
-        <div className="w-3 h-3 rounded-full bg-[#F97316]"></div>
-
-        <div className="w-20 h-[2px] bg-gray-300"></div>
-      </div>
-
-      <p className="text-gray-500 text-lg mt-6">
-        A timeline of growth, innovation and excellence
-      </p>
-
-    </div>
-
-    {/* Timeline Navigation */}
-    <div className="relative mb-20">
-
-      {/* Line */}
-      <div className="absolute top-6 left-0 w-full h-[3px] bg-[#E4E4E7] rounded-full"></div>
-
-      <div className="relative flex items-center justify-between">
-
-        {/* Arrow Left */}
-        <button className="w-14 h-14 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-[#1F2940] hover:bg-[#F97316] hover:text-white transition-all duration-300">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-
-        {/* Timeline Dots */}
-        <div className="flex-1 flex items-center justify-between px-8">
-
-          {[
-            "1",
-            "5",
-            "8",
-            "11",
-            "16",
-            "19",
-            "23",
-            "27",
-            "2",
-            "6",
-            "May, 12",
-          ].map((item, index) => (
-            <div key={index} className="relative flex flex-col items-center">
-
-              {/* Active Dot */}
-              <div
-                className={`w-7 h-7 rounded-full border-[4px] bg-white relative z-10 transition-all duration-300 ${
-                  item === "11"
-                    ? "border-[#800020] scale-125"
-                    : "border-[#F97316]"
-                }`}
-              >
-                {item === "11" && (
-                  <div className="absolute inset-0 rounded-full bg-[#800020] scale-50"></div>
-                )}
+                {/* Icon */}
+                <div className="absolute left-1/2 -bottom-12 -translate-x-1/2 w-24 h-24 rounded-full bg-white border-2 border-[#EBC9A8] flex items-center justify-center shadow-md">
+                  <svg className="w-10 h-10 text-[#E86A3A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                </div>
               </div>
 
-              <span
-                className={`mt-4 text-lg font-medium ${
-                  item === "11"
-                    ? "text-[#800020]"
-                    : "text-gray-500"
-                }`}
-              >
-                {item}
-              </span>
-            </div>
-          ))}
+              <div className="px-7 pt-20 pb-8">
+                <div className="h-px bg-[#EBC9A8] mb-7"></div>
 
+                <ul className="space-y-5 text-gray-700 text-[15px] leading-relaxed">
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#D39A6D] mt-2"></span>
+                    Located in 5 Star MIDC (Industrial Zone), Ranjangaon, Pune-India
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#D39A6D] mt-2"></span>
+                    Facility is well connected to Road & Air Route
+                  </li>
+
+                  <li className="text-[#2D6BB2] font-semibold pt-2">
+                    Connectivity:
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#D39A6D] mt-2"></span>
+                    Connected to Airport by Four Way National Highway
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#D39A6D] mt-2"></span>
+                    50 Km from Pune Airport
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#D39A6D] mt-2"></span>
+                    180 Km from Mumbai Airport
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-white rounded-[38px] border border-[#B8D7CD] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+
+              <div className="bg-[#B8D7CD] px-6 pt-10 pb-20 relative">
+                <h3 className="text-3xl font-bold text-[#214C44] text-center leading-tight">
+                  Packaging Areas
+                </h3>
+
+                <div className="absolute left-1/2 -bottom-12 -translate-x-1/2 w-24 h-24 rounded-full bg-white border-2 border-[#B8D7CD] flex items-center justify-center shadow-md">
+                  <svg className="w-10 h-10 text-[#00A651]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div className="px-7 pt-20 pb-8">
+                <div className="h-px bg-[#B8D7CD] mb-7"></div>
+
+                <ul className="space-y-5 text-gray-700 text-[15px] leading-relaxed">
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#9BC8BB] mt-2"></span>
+                    2 Primary & Secondary Packaging High Class Maintained GMP Suites
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#9BC8BB] mt-2"></span>
+                    Clean Room ISO Class 8 for Primary Packaging Operations
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#9BC8BB] mt-2"></span>
+                    cGMP Grade Equipments for Packaging Operations
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#9BC8BB] mt-2"></span>
+                    Separate Provision for Personnel & Material Entry in Clean Room
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#9BC8BB] mt-2"></span>
+                    Provision of Alarms for Notifications in Case of Deviations
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white rounded-[38px] border border-[#E7D38A] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+
+              <div className="bg-[#EEDB9C] px-6 pt-10 pb-20 relative">
+                <h3 className="text-3xl font-bold text-[#4E4318] text-center leading-tight">
+                  Storage & Distribution
+                </h3>
+
+                <div className="absolute left-1/2 -bottom-12 -translate-x-1/2 w-24 h-24 rounded-full bg-white border-2 border-[#E7D38A] flex items-center justify-center shadow-md">
+                  <svg className="w-10 h-10 text-[#7C6DB0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 7h18M5 7v13h14V7M9 11h6M9 15h4"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div className="px-7 pt-20 pb-8">
+                <div className="h-px bg-[#E7D38A] mb-7"></div>
+
+                <ul className="space-y-5 text-gray-700 text-[15px] leading-relaxed">
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#E7D38A] mt-2"></span>
+                    12000 Sq.Ft dedicated warehouse & distribution areas
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#E7D38A] mt-2"></span>
+                    Dedicated cGMP, GDP & GWP compliant storage facilities
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#E7D38A] mt-2"></span>
+                    Storage available at 15°C to 25°C, 2°C to 8°C, -15°C to -25°C & -80°C
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#E7D38A] mt-2"></span>
+                    Restricted & controlled access to storage areas
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#E7D38A] mt-2"></span>
+                    21 CFR Part 11 compliant monitoring & acquisition system
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="bg-white rounded-[38px] border border-[#E9CFC7] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+
+              <div className="bg-[#E9CFC7] px-6 pt-10 pb-20 relative">
+                <h3 className="text-3xl font-bold text-[#5B3C37] text-center leading-tight">
+                  Monitoring & Backup
+                </h3>
+
+                <div className="absolute left-1/2 -bottom-12 -translate-x-1/2 w-24 h-24 rounded-full bg-white border-2 border-[#E9CFC7] flex items-center justify-center shadow-md">
+                  <svg className="w-10 h-10 text-[#E86A3A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 17v-6m6 6V7m-9 10h12M5 21h14"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div className="px-7 pt-20 pb-8">
+                <div className="h-px bg-[#E9CFC7] mb-7"></div>
+
+                <ul className="space-y-5 text-gray-700 text-[15px] leading-relaxed">
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#E9CFC7] mt-2"></span>
+                    DG backup to all cold rooms & critical AHU’s
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#E9CFC7] mt-2"></span>
+                    100% standby for deep freezer & critical storage areas
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#E9CFC7] mt-2"></span>
+                    24×7 surveillance through CCTV cameras
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#E9CFC7] mt-2"></span>
+                    Fire alarm system
+                  </li>
+
+                  <li className="flex gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#E9CFC7] mt-2"></span>
+                    Fire fighting & sprinkler system
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
         </div>
+      </section>
 
-        {/* Arrow Right */}
-        <button className="w-14 h-14 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-[#1F2940] hover:bg-[#F97316] hover:text-white transition-all duration-300">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+            {/* ================= TIMELINE SECTION ================= */}
+      <section className="relative overflow-hidden bg-[#f5f7fa] py-28">
+        {/* Background Glow */}
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#E58A2F]/10 blur-3xl rounded-full" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#0E3B5F]/10 blur-3xl rounded-full" />
 
-      </div>
-
-      {/* Month Labels */}
-      <div className="flex justify-center gap-[450px] mt-10 text-3xl font-semibold">
-
-        <span className="text-[#F97316]">
-          April 2015
-        </span>
-
-        <span className="text-[#F97316]">
-          May 2015
-        </span>
-
-      </div>
-
-    </div>
-
-    {/* Cards Slider */}
-    <div className="relative overflow-x-auto scrollbar-hide pb-10">
-
-      <div className="flex gap-8 min-w-max px-2">
-
-        {[
-          {
-            date: "APRIL, 1",
-            title: "Global Expansion",
-            icon: "building",
-            active: false,
-          },
-          {
-            date: "APRIL, 5",
-            title: "Air Freight",
-            icon: "plane",
-            active: false,
-          },
-          {
-            date: "APRIL, 8",
-            title: "Clinical Operations",
-            icon: "globe",
-            active: false,
-          },
-          {
-            date: "APRIL, 11",
-            title: "Packaging Division",
-            icon: "box",
-            active: true,
-          },
-          {
-            date: "APRIL, 16",
-            title: "Warehouse Expansion",
-            icon: "warehouse",
-            active: false,
-          },
-          {
-            date: "APRIL, 19",
-            title: "Distribution Network",
-            icon: "truck",
-            active: false,
-          },
-          {
-            date: "APRIL, 23",
-            title: "Global Logistics",
-            icon: "ship",
-            active: false,
-          },
-        ].map((item, index) => (
-
-          <div
-            key={index}
-            className={`w-[320px] rounded-[30px] overflow-hidden bg-white flex-shrink-0 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl ${
-              item.active
-                ? "border border-[#C54A5A] shadow-xl"
-                : "border border-gray-200 shadow-sm"
-            }`}
-          >
-
-            {/* Top */}
-            <div className="bg-[#FBF3E7] h-[170px] flex items-center justify-center">
-
-              {/* ICONS */}
-              {item.icon === "building" && (
-                <svg className="w-20 h-20 text-[#800020]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.7} d="M4 21V7a1 1 0 011-1h4v15M9 21h6M15 21V3a1 1 0 011-1h3a1 1 0 011 1v18"/>
-                </svg>
-              )}
-
-              {item.icon === "plane" && (
-                <svg className="w-20 h-20 text-[#F97316]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.7} d="M10.18 9"/>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.7} d="M2.5 19l19-7L2.5 5v5l15 2-15 2v5z"/>
-                </svg>
-              )}
-
-              {item.icon === "globe" && (
-                <svg className="w-20 h-20 text-[#F97316]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="9" strokeWidth="1.7"/>
-                  <path strokeWidth="1.7" d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/>
-                </svg>
-              )}
-
-              {item.icon === "box" && (
-                <svg className="w-20 h-20 text-[#F97316]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeWidth="1.7" d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
-                  <path strokeWidth="1.7" d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/>
-                </svg>
-              )}
-
-              {item.icon === "warehouse" && (
-                <svg className="w-20 h-20 text-[#F97316]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeWidth="1.7" d="M3 10l9-7 9 7v10a1 1 0 01-1 1H4a1 1 0 01-1-1V10z"/>
-                  <path strokeWidth="1.7" d="M9 21V12h6v9"/>
-                </svg>
-              )}
-
-              {item.icon === "truck" && (
-                <svg className="w-20 h-20 text-[#F97316]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeWidth="1.7" d="M9 17H6a2 2 0 01-2-2V7a2 2 0 012-2h9v12"/>
-                  <path strokeWidth="1.7" d="M15 8h4l3 4v5h-7V8z"/>
-                </svg>
-              )}
-
-              {item.icon === "ship" && (
-                <svg className="w-20 h-20 text-[#F97316]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeWidth="1.7" d="M3 20s2 2 5 2 5-2 5-2 2 2 5 2 5-2 5-2"/>
-                  <path strokeWidth="1.7" d="M5 18l2-8h10l2 8"/>
-                  <path strokeWidth="1.7" d="M12 10V3"/>
-                </svg>
-              )}
-
-            </div>
-
-            {/* Bottom */}
-            <div className="p-8 text-center">
-
-              <h3
-                className={`text-3xl font-black uppercase ${
-                  item.active
-                    ? "text-[#800020]"
-                    : "text-[#1F2940]"
-                }`}
-              >
-                {item.date}
-              </h3>
-
-              <div className="w-10 h-[3px] bg-[#F97316] mx-auto my-5 rounded-full"></div>
-
-              <p className="text-gray-500 leading-relaxed text-[17px]">
-                As a market leader in global clinical supply and logistics,
-                Seveillar excels in providing tailored pharmaceutical solutions.
-              </p>
-
-            </div>
+        <div className="max-w-full mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+          {/* Heading */}
+          <div className="mb-20 px-2">
+            <p className="text-[#E58A2F] uppercase tracking-[0.3em] text-sm font-semibold mb-4">
+              Company Journey
+            </p>
+            <h2 className="text-4xl md:text-6xl font-bold text-[#0E3B5F] leading-tight max-w-4xl">
+              Building Global Clinical Supply Excellence
+            </h2>
           </div>
 
-        ))}
+          {/* Timeline - Full width horizontal scroll with hidden scrollbar */}
+          <div className="relative w-full">
+            {/* Timeline Line */}
+            <div className="absolute top-[72px] left-0 right-0 h-[2px] bg-gray-300" />
 
-      </div>
+            {/* Horizontal Scroll Container - Hide scrollbar with Tailwind class */}
+            <div 
+              className="flex gap-6 overflow-x-auto pb-12 pt-4 px-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+              style={{ 
+                WebkitOverflowScrolling: 'touch'
+              }}
+            >
+              {timelineData.map((item, index) => (
+                <motion.div
+                  key={index}
+                  onHoverStart={() => setActiveTimeline(index)}
+                  onHoverEnd={() => setActiveTimeline(-1)}
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.3 }}
+                  className="relative flex-shrink-0 w-[340px] md:w-[380px] cursor-pointer"
+                >
+                  {/* Timeline Dot */}
+                  <div
+                    className={`absolute top-[68px] left-8 w-5 h-5 rounded-full border-[3px] z-20 transition-all duration-300 ${
+                      activeTimeline === index
+                        ? "bg-[#E58A2F] border-white scale-125 shadow-lg"
+                        : "bg-[#0E3B5F] border-white"
+                    }`}
+                  />
 
-    </div>
+                  {/* Card - Fixed height container to prevent footer movement */}
+                  <div className="mt-24">
+                    <div
+                      className={`rounded-xl overflow-hidden border transition-all duration-500 ${
+                        activeTimeline === index
+                          ? "bg-white shadow-xl border-[#E58A2F]/30 relative z-20"
+                          : "bg-white/80 border-gray-200 shadow-sm"
+                      }`}
+                    >
+                      {/* Card Image */}
+                      <div className="relative h-52 overflow-hidden">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className={`w-full h-full object-cover transition-transform duration-700 ${
+                            activeTimeline === index ? "scale-105" : "scale-100"
+                          }`}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                        <div className="absolute bottom-5 left-5">
+                          <span className="text-[#E58A2F] text-xs tracking-[0.2em] uppercase font-semibold">
+                            {item.year}
+                          </span>
+                          <h3 className="text-white text-xl font-bold mt-1">
+                            {item.title}
+                          </h3>
+                        </div>
+                      </div>
 
-    {/* Bottom Navigation */}
-    <div className="flex justify-center gap-8 mt-14">
+                      {/* Card Content - Fixed height container */}
+                      <div className="p-6 relative">
+                        <div className="min-h-[72px]">
+                          <p className="text-gray-600 leading-relaxed text-sm">
+                            {item.short}
+                          </p>
+                        </div>
 
-      <button className="w-20 h-20 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-[#800020] hover:bg-[#800020] hover:text-white transition-all duration-300">
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
+                        {/* Expanded content - Absolutely positioned to not affect footer */}
+                        {activeTimeline === index && (
+                          <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute left-0 right-0 top-full mt-2 bg-white rounded-xl shadow-2xl border border-[#E58A2F]/20 p-6 z-30 min-w-[320px] md:min-w-[380px]"
+                            style={{ 
+                              boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+                            }}
+                          >
+                            <p className="text-gray-700 leading-relaxed text-sm mb-5">
+                              {item.full}
+                            </p>
+                            <button className="px-5 py-2.5 rounded-lg bg-[#0E3B5F] text-white text-sm font-medium hover:bg-[#E58A2F] transition-all duration-300 shadow-md hover:shadow-lg">
+                              Learn More
+                            </button>
+                            {/* Small triangle pointer */}
+                            <div className="absolute -top-2 left-8 w-4 h-4 bg-white border-t border-l border-[#E58A2F]/20 rotate-45"></div>
+                          </motion.div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <button className="w-20 h-20 rounded-full bg-white shadow-lg border border-gray-100 flex items-center justify-center text-[#800020] hover:bg-[#800020] hover:text-white transition-all duration-300">
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-
-    </div>
-
-  </div>
-</section>
     </main>
     <Footer />
     </>

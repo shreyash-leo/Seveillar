@@ -15,7 +15,7 @@ export default function FacilityPage() {
 {/* FACILITY HERO SECTION */}
 {/* ================================================= */}
 
-<section className="relative overflow-hidden min-h-[48vh] flex items-center pt-24 pb-10 bg-[#071c2b]">
+<section className="relative overflow-hidden min-h-[68vh] flex items-center pt-24 pb-10 bg-[#071c2b]">
 
   {/* BACKGROUND IMAGE */}
 
