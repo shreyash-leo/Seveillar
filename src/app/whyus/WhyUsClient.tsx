@@ -182,127 +182,114 @@ export default function WhyUsClient() {
       <main className="bg-white overflow-hidden">
 
         {/* ============================================================ */}
-        {/* HERO SECTION                                                   */}
-        {/* ============================================================ */}
-        {/* Banner (Hero) Background: #FFF5F0 (pale orange tint) per specification */}
-        <section className="relative overflow-hidden min-h-[72vh] flex items-center pt-24 pb-12 bg-[#FFF5F0]">
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <Image
-              src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2400&auto=format&fit=crop"
-              alt="Why Choose Seveillar"
-              fill
-              sizes="100vw"
-              className="object-cover opacity-30"
-              priority
-            />
-          </div>
+{/* HERO SECTION */}
+{/* ============================================================ */}
+<section className="relative overflow-hidden min-h-[72vh] flex items-center pt-24 pb-12">
 
-          {/* Overlays - using dark brown */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#28151B]/96 via-[#4C292F]/85 to-[#28151B]/90" />
-          <div className="absolute top-[-20%] right-[-5%] w-[500px] h-[500px] rounded-full bg-[#E95A25]/10 blur-[120px]" />
-          <div className="absolute bottom-[-20%] left-[-10%] w-[450px] h-[450px] rounded-full bg-[#28151B]/20 blur-[100px]" />
+  {/* ORIGINAL BACKGROUND IMAGE */}
+  <div className="absolute inset-0">
+    <Image
+      src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2400&auto=format&fit=crop"
+      alt="Why Choose Seveillar"
+      fill
+      sizes="100vw"
+      className="object-cover"
+      priority
+    />
+  </div>
 
-          {/* Content */}
-          <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 lg:px-20 w-full">
-            <div className="grid lg:grid-cols-[1fr_0.8fr] gap-16 items-center">
+  {/* CONTENT */}
+  <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 lg:px-20 w-full">
+    <div className="grid lg:grid-cols-[1fr_0.8fr] gap-16 items-center">
 
-              {/* Left */}
-              <div className="pt-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7 }}
-                  className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/10 border border-white/10 backdrop-blur-xl mb-8"
-                >
-                  <div className="w-2 h-2 rounded-full bg-[#E95A25] animate-pulse" />
-                  <span className="text-white uppercase tracking-[0.25em] text-[11px] font-medium">
-                    WHY CHOOSE SEVEILLAR
-                  </span>
-                </motion.div>
+      {/* LEFT */}
+      <div className="pt-8">
 
-                <motion.h1
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.9, delay: 0.05 }}
-                  className="text-3xl md:text-4xl lg:text-[4rem] font-bold leading-[0.92] tracking-[-0.05em] text-white"
-                >
-                  Your Trusted Partner
-                  <span className="block text-[#E95A25] mt-1">
-                    For Global Clinical
-                  </span>
-                  <span className="block text-white/80">
-                    Trial Supply Solutions
-                  </span>
-                </motion.h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+          className="text-3xl md:text-4xl lg:text-[4rem] font-bold leading-[0.92] tracking-[-0.05em] text-white"
+        >
+          Your Trusted Partner
+          <span className="block text-[#E95A25] mt-1">
+            For Global Clinical
+          </span>
+          <span className="block text-white">
+            Trial Supply Solutions
+          </span>
+        </motion.h1>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.15 }}
-                  className="mt-8 text-lg md:text-[19px] text-white/72 leading-relaxed font-light max-w-2xl"
-                >
-                  At Seveillar Clinical Supplies Services Pvt. Ltd., we deliver reliable,
-                  compliant, and efficient clinical trial supply solutions designed to support
-                  global clinical research. Our infrastructure, regulatory compliance, and
-                  operational expertise make us a trusted partner for sponsors, CROs, and
-                  pharmaceutical companies worldwide.
-                </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.15 }}
+          className="mt-8 text-lg md:text-[19px] text-white leading-relaxed font-light max-w-2xl"
+        >
+          At Seveillar Clinical Supplies Services Pvt. Ltd., we deliver reliable,
+          compliant, and efficient clinical trial supply solutions designed to support
+          global clinical research.
+        </motion.p>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.25 }}
-                  className="flex flex-wrap gap-10 mt-10"
-                >
-                  {[
-                    ["300+", "GLOBAL STUDIES"],
-                    ["100+", "SPONSORS SERVED"],
-                    ["25+", "COUNTRIES"],
-                  ].map((item, i) => (
-                    <div key={i}>
-                      <h3 className="text-3xl md:text-4xl font-bold text-[#E95A25] tracking-[-0.04em]">
-                        {item[0]}
-                      </h3>
-                      <p className="mt-2 text-white/55 uppercase tracking-[0.15em] text-[11px]">
-                        {item[1]}
-                      </p>
-                    </div>
-                  ))}
-                </motion.div>
-              </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.25 }}
+          className="flex flex-wrap gap-10 mt-10"
+        >
+          {[
+            ["300+", "GLOBAL STUDIES"],
+            ["100+", "SPONSORS SERVED"],
+            ["25+", "COUNTRIES"],
+          ].map((item, i) => (
+            <div key={i}>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#E95A25] tracking-[-0.04em]">
+                {item[0]}
+              </h3>
+              <p className="mt-2 text-white uppercase tracking-[0.15em] text-[11px]">
+                {item[1]}
+              </p>
+            </div>
+          ))}
+        </motion.div>
 
-              {/* Right – stacked cards */}
-              <motion.div
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, delay: 0.1 }}
-                className="relative hidden lg:flex flex-col gap-5"
-              >
-                {[
-                  { label: "USFDA Audited", sub: "Regulatory Excellence" },
-                  { label: "QP Certified", sub: "EU GMP Compliance" },
-                  { label: "22,000 Sq. Ft", sub: "State-of-Art GMP Facility" },
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-xl px-7 py-6 flex items-center justify-between"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#E95A25]/5 to-transparent" />
-                    <div className="relative z-10">
-                      <p className="text-white/50 uppercase tracking-[0.2em] text-[10px] mb-1">{item.sub}</p>
-                      <h4 className="text-2xl font-bold text-white">{item.label}</h4>
-                    </div>
-                    <div className="relative z-10 w-12 h-12 rounded-2xl bg-[#E95A25]/20 flex items-center justify-center">
-                      <div className="w-3 h-3 rounded-full bg-[#E95A25]" />
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
+      </div>
 
+      {/* RIGHT */}
+      <motion.div
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        className="relative hidden lg:flex flex-col gap-5"
+      >
+        {[
+          { label: "USFDA Audited", sub: "Regulatory Excellence" },
+          { label: "QP Certified", sub: "EU GMP Compliance" },
+          { label: "22,000 Sq. Ft", sub: "State-of-Art GMP Facility" },
+        ].map((item, i) => (
+          <div
+            key={i}
+            className="relative overflow-hidden rounded-[28px] border border-white/20 bg-white/10 backdrop-blur-sm px-7 py-6 flex items-center justify-between"
+          >
+            <div>
+              <p className="text-white uppercase tracking-[0.2em] text-[10px] mb-1">
+                {item.sub}
+              </p>
+              <h4 className="text-2xl font-bold text-white">
+                {item.label}
+              </h4>
+            </div>
+
+            <div className="w-12 h-12 rounded-2xl bg-[#E95A25] flex items-center justify-center">
+              <div className="w-3 h-3 rounded-full bg-white" />
             </div>
           </div>
-        </section>
+        ))}
+      </motion.div>
+
+    </div>
+  </div>
+</section>
 
         {/* ============================================================ */}
         {/* OUR KEY DIFFERENTIATORS                                        */}

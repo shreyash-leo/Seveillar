@@ -78,7 +78,7 @@ export default function ContactClient() {
         
         {/* ================= HERO SECTION ================= */}
         {/* Banner (Hero) Background: #FFF5F0 (pale orange tint) per specification */}
-        <section className="relative h-[40vh] md:h-[68vh] flex items-center justify-center overflow-hidden bg-[#FFF5F0]">
+        <section className="relative h-[40vh] md:h-[72vh] flex items-center justify-center overflow-hidden bg-[#FFF5F0]">
           
           {/* Background - OPTIMIZED: removed expensive scale animation */}
           <motion.div

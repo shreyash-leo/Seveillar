@@ -148,105 +148,74 @@ export default function ServicesClient() {
       <main className="bg-white overflow-hidden">
 
         {/* ================================================= */}
-        {/* PREMIUM INTERNAL HERO SECTION - OPTIMIZED */}
-        {/* ================================================= */}
-        {/* Banner (Hero) Background: #FFF5F0 (pale orange tint) per specification */}
-        <section className="relative overflow-hidden min-h-[68vh] flex items-center pt-28 pb-14 bg-[#FFF5F0]">
-          {/* BACKGROUND IMAGE - OPTIMIZED: removed scale animation */}
-          <div className="absolute inset-0">
-            <Image
-              src="https://images.unsplash.com/photo-1579165466741-7f35e4755660?q=80&w=2200&auto=format&fit=crop"
-              alt="Clinical Background"
-              fill
-              sizes="100vw"
-              className="object-cover opacity-50"
-              priority
-            />
-          </div>
+{/* PREMIUM INTERNAL HERO SECTION */}
+{/* ================================================= */}
+<section className="relative overflow-hidden min-h-[72vh] flex items-center pt-28 pb-14">
 
-          {/* OVERLAY - using dark brown for better harmony */}
-          <div className="absolute inset-0 bg-[#28151B]/60" />
+  {/* ORIGINAL BACKGROUND IMAGE */}
+  <div className="absolute inset-0">
+    <Image
+      src="https://images.unsplash.com/photo-1579165466741-7f35e4755660?q=80&w=2200&auto=format&fit=crop"
+      alt="Clinical Background"
+      fill
+      sizes="100vw"
+      className="object-cover"
+      priority
+    />
+  </div>
 
-          {/* LIGHT GLOW - using orange accent */}
-          <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-[#E95A25]/10 blur-[100px]" />
-          <div className="absolute bottom-[-30%] left-[-10%] w-[500px] h-[500px] rounded-full bg-[#28151B]/20 blur-[100px]" />
+  {/* CONTENT */}
+  <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 lg:px-20 w-full">
+    <div className="grid lg:grid-cols-[1fr_0.65fr] gap-16 items-center">
 
-          {/* CONTENT */}
-          <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 lg:px-20 w-full">
-            <div className="grid lg:grid-cols-[1fr_0.65fr] gap-16 items-center">
-              {/* LEFT CONTENT */}
-              <div className="pt-10">
-                <motion.h1
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.9 }}
-                  className="text-3xl md:text-4xl lg:text-[4rem] font-bold leading-[0.92] tracking-[-0.05em] text-white"
-                >
-                  Integrated Clinical Trial
-                  <span className="block text-[#E95A25] mt-1">
-                    Supply Services
-                  </span>
-                </motion.h1>
+      {/* LEFT CONTENT */}
+      <div className="pt-10">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+          className="text-3xl md:text-4xl lg:text-[4rem] font-bold leading-[0.92] tracking-[-0.05em] text-white"
+        >
+          Integrated Clinical Trial
+          <span className="block text-[#E95A25] mt-1">
+            Supply Services
+          </span>
+        </motion.h1>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 25 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.1 }}
-                  className="mt-8 text-lg md:text-[21px] text-white/75 leading-relaxed font-light max-w-2xl"
-                >
-                  Seveillar Clinical Supplies Services Pvt. Ltd.
-                  delivers integrated clinical supply management
-                  solutions supporting pharmaceutical,
-                  biotechnology, and CRO organizations globally.
-                </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.1 }}
+          className="mt-8 text-lg md:text-[21px] text-white leading-relaxed font-light max-w-2xl"
+        >
+          Seveillar Clinical Supplies Services Pvt. Ltd.
+          delivers integrated clinical supply management
+          solutions supporting pharmaceutical,
+          biotechnology, and CRO organizations globally.
+        </motion.p>
+      </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 25 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.3 }}
-                  className="flex flex-wrap gap-10 md:gap-16 mt-14"
-                >
-                  {[
-                    ['300+', 'Clinical Studies'],
-                    ['25+', 'Countries'],
-                    ['24/7', 'Support'],
-                  ].map((item, index) => (
-                    <div key={index} className="relative">
-                      <h3 className="text-3xl md:text-4xl font-bold text-[#E95A25]">
-                        {item[0]}
-                      </h3>
-                      <p className="mt-2 text-white/55 uppercase tracking-[0.15em] text-[11px]">
-                        {item[1]}
-                      </p>
-                    </div>
-                  ))}
-                </motion.div>
-              </div>
+      {/* RIGHT IMAGE */}
+      <motion.div
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        className="flex justify-center lg:justify-end"
+      >
+        <div className="relative w-[220px] md:w-[280px] aspect-[9/13] rounded-[34px] overflow-hidden border border-white/20 shadow-[0_30px_80px_rgba(0,0,0,0.25)]">
+          <Image
+            src="https://images.unsplash.com/photo-1579165466741-7f35e4755660?q=80&w=1400&auto=format&fit=crop"
+            alt="Clinical Research"
+            fill
+            sizes="(max-width: 768px) 50vw, 280px"
+            className="object-cover"
+          />
+        </div>
+      </motion.div>
 
-              {/* RIGHT IMAGE - OPTIMIZED: removed hover scale */}
-              <motion.div
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1 }}
-                className="flex justify-center lg:justify-end"
-              >
-                <div className="relative">
-                  <div className="absolute inset-0 bg-[#E95A25]/10 blur-[40px] rounded-full" />
-                  <div className="relative w-[220px] md:w-[280px] aspect-[9/13] rounded-[34px] overflow-hidden border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
-                    <Image
-                      src="https://images.unsplash.com/photo-1579165466741-7f35e4755660?q=80&w=1400&auto=format&fit=crop"
-                      alt="Clinical Research"
-                      fill
-                      sizes="(max-width: 768px) 50vw, 280px"
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#28151B]/45 to-transparent" />
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
+    </div>
+  </div>
+</section>
 
         {/* ================================================= */}
         {/* SERVICES OVERVIEW SECTION - OPTIMIZED */}
@@ -401,7 +370,7 @@ export default function ServicesClient() {
         {/* IMPROVED OPERATIONAL WORKFLOW SECTION - OPTIMIZED */}
         {/* ================================================= */}
         {/* Using brand colors: dark brown background with orange accents */}
-        <section className="relative py-22 md:py-24 overflow-hidden bg-[#2815]">
+        <section className="relative py-22 md:py-24 overflow-hidden bg-[#2815B]">
           <div className="absolute inset-0">
             <Image
               src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2200&auto=format&fit=crop"
@@ -481,7 +450,7 @@ export default function ServicesClient() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
-                  className="rounded-2xl bg-white/5 border border-white/10 px-6 py-5 backdrop-blur-xl"
+                  className="rounded-2xl bg-white/5 border border-white/10 px-6 py-5"
                 >
                   <div className="flex items-center gap-4">
                     <div className="w-3 h-3 rounded-full bg-[#E95A25]" />
@@ -678,22 +647,6 @@ export default function ServicesClient() {
 
       </main>
       <Footer />
-
-      <style jsx global>{`
-        .custom-scroll::-webkit-scrollbar {
-          width: 5px;
-        }
-        .custom-scroll::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .custom-scroll::-webkit-scrollbar-thumb {
-          background: rgba(40, 21, 27, 0.22);
-          border-radius: 20px;
-        }
-        .custom-scroll::-webkit-scrollbar-thumb:hover {
-          background: rgba(233, 90, 37, 0.5);
-        }
-      `}</style>
     </>
   );
 }

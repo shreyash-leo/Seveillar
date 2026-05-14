@@ -48,114 +48,107 @@ export default function FacilityClient() {
       <main className="bg-white overflow-hidden">
 
         {/* ================================================= */}
-        {/* FACILITY HERO SECTION - OPTIMIZED */}
-        {/* ================================================= */}
-        {/* Banner (Hero) Background: #FFF5F0 (pale orange tint) per specification */}
-        <section className="relative overflow-hidden min-h-[68vh] flex items-center pt-24 pb-10 bg-[#FFF5F0]">
-          {/* BACKGROUND IMAGE - OPTIMIZED: removed scale animation */}
-          <div className="absolute inset-0">
-            <Image
-              src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2400&auto=format&fit=crop"
-              alt="Facility Background"
-              fill
-              sizes="100vw"
-              className="object-cover blur-[1px]"
-              priority
-            />
-          </div>
+{/* FACILITY HERO SECTION */}
+{/* ================================================= */}
+<section className="relative overflow-hidden min-h-[72vh] flex items-center pt-24 pb-10">
 
-          {/* OVERLAY - using dark brown for better harmony */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#28151B]/94 via-[#4C292F]/82 to-[#28151B]/88" />
+  {/* ORIGINAL BACKGROUND IMAGE */}
+  <div className="absolute inset-0">
+    <Image
+      src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2400&auto=format&fit=crop"
+      alt="Facility Background"
+      fill
+      sizes="100vw"
+      className="object-cover"
+      priority
+    />
+  </div>
 
-          {/* GLOW - using orange accent */}
-          <div className="absolute top-[-20%] right-[-10%] w-[450px] h-[450px] rounded-full bg-[#E95A25]/10 blur-[100px]" />
-          <div className="absolute bottom-[-20%] left-[-10%] w-[450px] h-[450px] rounded-full bg-[#28151B]/20 blur-[100px]" />
+  {/* CONTENT */}
+  <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 lg:px-20 w-full">
+    <div className="grid lg:grid-cols-[1fr_0.85fr] gap-14 items-center">
 
-          {/* CONTENT */}
-          <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-16 lg:px-20 w-full">
-            <div className="grid lg:grid-cols-[1fr_0.85fr] gap-14 items-center">
-              {/* LEFT CONTENT */}
-              <div className="pt-8">
-                <br />
-                <br />
-                <motion.h1
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.9 }}
-                  className="text-3xl md:text-4xl lg:text-[4rem] font-bold leading-[0.92] tracking-[-0.05em] text-white"
-                >
-                  Facility, Infrastructure
-                  <span className="block text-[#E95A25]">
-                    & Global Operations
-                  </span>
-                </motion.h1>
+      {/* LEFT CONTENT */}
+      <div className="pt-8">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+          className="text-3xl md:text-4xl lg:text-[4rem] font-bold leading-[0.92] tracking-[-0.05em] text-white"
+        >
+          Facility, Infrastructure
+          <span className="block text-[#E95A25]">
+            & Global Operations
+          </span>
+        </motion.h1>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.1 }}
-                  className="mt-7 text-lg md:text-[19px] text-white/72 leading-relaxed font-light max-w-2xl"
-                >
-                  Seveillar operates advanced cGMP-compliant
-                  infrastructure supporting clinical packaging,
-                  cold-chain storage, warehousing,
-                  labeling, and worldwide clinical
-                  trial distribution operations.
-                </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.1 }}
+          className="mt-7 text-lg md:text-[19px] text-white leading-relaxed font-light max-w-2xl"
+        >
+          Seveillar operates advanced cGMP-compliant
+          infrastructure supporting clinical packaging,
+          cold-chain storage, warehousing,
+          labeling, and worldwide clinical
+          trial distribution operations.
+        </motion.p>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.2 }}
-                  className="flex flex-wrap gap-10 mt-10"
-                >
-                  {[
-                    ['22000', 'SQ. FT FACILITY'],
-                    ['1200+', 'PALLET CAPACITY'],
-                    ['24/7', 'MONITORING'],
-                  ].map((item, index) => (
-                    <div key={index}>
-                      <h3 className="text-3xl md:text-4xl font-bold text-[#E95A25] tracking-[-0.04em]">
-                        {item[0]}
-                      </h3>
-                      <p className="mt-2 text-white/55 uppercase tracking-[0.15em] text-[11px]">
-                        {item[1]}
-                      </p>
-                    </div>
-                  ))}
-                </motion.div>
-              </div>
-
-              {/* RIGHT IMAGE - OPTIMIZED: removed hover scale */}
-              <motion.div
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1 }}
-                className="relative flex justify-center lg:justify-end"
-              >
-                <div className="relative overflow-hidden rounded-[34px] w-full max-w-[720px] h-[360px] border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
-                  <Image
-                    src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2000&auto=format&fit=crop"
-                    alt="Clinical Facility"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#28151B]/92 via-[#28151B]/35 to-transparent" />
-                  <div className="relative z-10 h-full flex flex-col justify-end p-8">
-                    <div className="w-14 h-[3px] bg-[#E95A25] rounded-full mb-5" />
-                    <h3 className="text-3xl font-bold text-white leading-tight">
-                      Advanced cGMP Infrastructure
-                    </h3>
-                    <p className="mt-4 text-white/70 leading-relaxed">
-                      Purpose-built operational facility supporting global clinical supply management workflows.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="flex flex-wrap gap-10 mt-10"
+        >
+          {[
+            ['22000', 'SQ. FT FACILITY'],
+            ['1200+', 'PALLET CAPACITY'],
+            ['24/7', 'MONITORING'],
+          ].map((item, index) => (
+            <div key={index}>
+              <h3 className="text-3xl md:text-4xl font-bold text-[#E95A25] tracking-[-0.04em]">
+                {item[0]}
+              </h3>
+              <p className="mt-2 text-white uppercase tracking-[0.15em] text-[11px]">
+                {item[1]}
+              </p>
             </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* RIGHT IMAGE */}
+      <motion.div
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        className="relative flex justify-center lg:justify-end"
+      >
+        <div className="relative overflow-hidden rounded-[34px] w-full max-w-[720px] h-[360px] border border-white/20 shadow-[0_30px_80px_rgba(0,0,0,0.25)]">
+          <Image
+            src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2000&auto=format&fit=crop"
+            alt="Clinical Facility"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+
+          <div className="relative z-10 h-full flex flex-col justify-end p-8">
+            <div className="w-14 h-[3px] bg-[#E95A25] rounded-full mb-5" />
+            <h3 className="text-3xl font-bold text-white leading-tight">
+              Advanced cGMP Infrastructure
+            </h3>
+            <p className="mt-4 text-white leading-relaxed">
+              Purpose-built operational facility supporting global clinical supply management workflows.
+            </p>
           </div>
-        </section>
+        </div>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
 
         {/* ================================================= */}
         {/* FACILITY OVERVIEW SECTION - OPTIMIZED */}

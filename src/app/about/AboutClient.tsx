@@ -82,7 +82,7 @@ export default function AboutClient() {
         
         {/* ================= HERO SECTION ================= */}
         {/* Banner (Hero) Background: #FFF5F0 (pale orange tint) per specification */}
-        <section className="relative h-[45vh] md:h-[68vh] flex items-center justify-center overflow-hidden bg-[#FFF5F0]">
+        <section className="relative h-[45vh] md:h-[72vh] flex items-center justify-center overflow-hidden bg-[#FFF5F0]">
           
           {/* Background - OPTIMIZED: removed expensive scale animation */}
           <motion.div
@@ -202,43 +202,137 @@ export default function AboutClient() {
             </motion.div>
           </div>
 
-          {/* ================= MEANING BEHIND SEVEILLAR (ADDED BELOW) ================= */}
-          <motion.div 
-            className="max-w-4xl mx-auto mt-24 pt-12 border-t border-[#FAD1C3]/30"
+          {/* ================= MEANING BEHIND SEVEILLAR ================= */}
+          <motion.div
+            className="relative max-w-6xl mx-auto mt-28"
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            <div className="text-center">
-              <p className="text-[#E95A25] uppercase tracking-[0.2em] text-sm font-semibold">
-                The Meaning Behind Seveillar
-              </p>
-              <h3 className="mt-4 text-3xl md:text-4xl font-bold text-[#28151B]">
-                Help for People
-              </h3>
-              <div className="w-20 h-1 bg-[#E95A25] mx-auto mt-6 rounded-full"></div>
-            </div>
+            {/* Background Glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#FAD1C3]/30 via-[#FFF7F4] to-[#FFE9DF]/40 rounded-[40px] blur-3xl"></div>
 
-            <div className="mt-10 prose prose-lg text-[#5A3A3E] mx-auto text-center">
-              <p className="leading-relaxed">
-                The name <span className="font-semibold text-[#28151B]">Seveillar</span> reflects the philosophy 
-                that drives our organization. It is inspired by a Greek-origin concept, where 
-                <span className="font-semibold text-[#28151B]"> “Seve”</span> signifies 
-                <span className="font-semibold text-[#28151B]"> help</span> and 
-                <span className="font-semibold text-[#28151B]"> “Illar”</span> signifies 
-                <span className="font-semibold text-[#28151B]"> people</span>, symbolizing our commitment to 
-                supporting people through clinical research and healthcare advancement.
-              </p>
-              <p className="mt-4 leading-relaxed">
-                The name embodies our purpose of enabling life-improving therapies by supporting 
-                the clinical development process.
-              </p>
+            {/* Main Card */}
+            <div className="relative overflow-hidden rounded-[36px] border border-[#FAD1C3]/40 bg-white/80 backdrop-blur-xl shadow-[0_20px_80px_rgba(233,90,37,0.08)]">
+              
+              {/* Decorative Elements */}
+              <div className="absolute top-0 right-0 w-72 h-72 bg-[#E95A25]/5 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#28151B]/5 rounded-full blur-3xl"></div>
+
+              <div className="relative grid lg:grid-cols-2 gap-12 items-center p-8 md:p-14 lg:p-20">
+                
+                {/* LEFT SIDE */}
+                <div>
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#E95A25]/20 bg-[#FFF6F2]">
+                    <div className="w-2 h-2 rounded-full bg-[#E95A25]"></div>
+                    <span className="text-[#E95A25] uppercase tracking-[0.18em] text-xs font-semibold">
+                      The Meaning Behind Seveillar
+                    </span>
+                  </div>
+
+                  <h3 className="mt-6 text-4xl md:text-5xl font-bold text-[#28151B] leading-tight">
+                    A Name Built Around
+                    <span className="block text-[#E95A25]">
+                      Helping People
+                    </span>
+                  </h3>
+
+                  <p className="mt-6 text-lg leading-relaxed text-[#5A3A3E]">
+                    The identity of <span className="font-semibold text-[#28151B]">Seveillar</span> 
+                    is rooted in purpose, compassion, and innovation. The name reflects our mission 
+                    of supporting people through healthcare advancement and clinical research excellence.
+                  </p>
+
+                  {/* Feature Points */}
+                  <div className="mt-8 space-y-4">
+                    <div className="flex items-start gap-4">
+                      <div className="mt-1 w-10 h-10 rounded-xl bg-[#FFF2EC] flex items-center justify-center text-[#E95A25] font-bold">
+                        S
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-[#28151B]">“Seve” — Help</h4>
+                        <p className="text-[#6B4A4F] text-sm mt-1">
+                          Representing support, care, and commitment towards improving lives.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-4">
+                      <div className="mt-1 w-10 h-10 rounded-xl bg-[#FFF2EC] flex items-center justify-center text-[#E95A25] font-bold">
+                        I
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-[#28151B]">“Illar” — People</h4>
+                        <p className="text-[#6B4A4F] text-sm mt-1">
+                          Symbolizing humanity, collaboration, and patient-focused progress.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* RIGHT SIDE */}
+                <div className="relative">
+                  <div className="relative rounded-[32px] bg-gradient-to-br from-[#28151B] to-[#3D2026] p-10 md:p-14 overflow-hidden shadow-2xl">
+                    
+                    {/* Decorative Circle */}
+                    <div className="absolute -top-20 -right-20 w-56 h-56 rounded-full border border-white/10"></div>
+                    <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#E95A25]/10 rounded-full blur-2xl"></div>
+
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-4">
+                        <div className="w-16 h-16 rounded-2xl bg-[#E95A25] flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                          S
+                        </div>
+
+                        <div>
+                          <h4 className="text-2xl font-bold text-white">
+                            Seveillar
+                          </h4>
+                          <p className="text-[#FAD1C3] text-sm tracking-wide">
+                            Clinical Research & Healthcare
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mt-10 space-y-6">
+                        <div className="border-l-2 border-[#E95A25] pl-5">
+                          <p className="text-[#F8E7E1] leading-relaxed">
+                            “A purpose-driven organization focused on enabling life-improving therapies 
+                            and advancing healthcare innovation through research excellence.”
+                          </p>
+                        </div>
+
+                        <div className="flex flex-wrap gap-3 pt-4">
+                          <span className="px-4 py-2 rounded-full bg-white/10 text-[#FFE7DC] text-sm">
+                            Healthcare
+                          </span>
+
+                          <span className="px-4 py-2 rounded-full bg-white/10 text-[#FFE7DC] text-sm">
+                            Innovation
+                          </span>
+
+                          <span className="px-4 py-2 rounded-full bg-white/10 text-[#FFE7DC] text-sm">
+                            Research
+                          </span>
+
+                          <span className="px-4 py-2 rounded-full bg-white/10 text-[#FFE7DC] text-sm">
+                            Human-Centered
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </motion.div>
-        </section>
 
-        {/* ================= PHILOSOPHY SECTION ================= */}
+          </section>
+
+{/* ================= PHILOSOPHY SECTION ================= */}
         {/* Capabilities Background: #F8F2EF (light brown tint) per specification */}
         <section className="py-20 px-6 md:px-14 bg-[#F8F2EF]">
           <div className="max-w-7xl mx-auto">
@@ -452,12 +546,21 @@ export default function AboutClient() {
                     research industries.
                   </p>
 
-                  <p className="mt-4 text-[#5A3A3E] leading-relaxed">
-                    Under his leadership, Seveillar has grown into a trusted
-                    global partner providing comprehensive clinical supplies
-                    management solutions with strong emphasis on quality,
-                    compliance, and operational excellence.
-                  </p>
+                    <div className="mt-6 space-y-3">
+  {[
+    "Global clinical supplies management expertise across therapeutic studies",
+    "Strong focus on quality and regulatory compliance standards worldwide",
+    "Operational excellence across international clinical research projects",
+    "Trusted leadership in pharmaceutical research and healthcare innovation",
+  ].map((point, index) => (
+    <div key={index} className="flex items-start gap-3">
+      <div className="mt-2 h-2 w-2 rounded-full bg-[#E95A25]"></div>
+      <p className="text-[#5A3A3E] leading-relaxed">
+        {point}
+      </p>
+    </div>
+  ))}
+</div>
                 </div>
               </motion.div>
 
@@ -495,12 +598,21 @@ export default function AboutClient() {
                     pharmaceutical packaging, and global project coordination.
                   </p>
 
-                  <p className="mt-4 text-[#5A3A3E] leading-relaxed">
-                    He oversees project management, operational planning,
-                    logistics, and client coordination, ensuring seamless
-                    execution of global clinical supply operations with full
-                    regulatory compliance.
-                  </p>
+                   <div className="mt-6 space-y-3">
+  {[
+    "Clinical supply chain management for global trial operations",
+    "Global logistics and operational planning across multiple regions",
+    "Project execution and client coordination with strategic oversight",
+    "Regulatory-compliant clinical operations ensuring quality standards",
+  ].map((point, index) => (
+    <div key={index} className="flex items-start gap-3">
+      <div className="mt-2 h-2 w-2 rounded-full bg-[#E95A25]"></div>
+      <p className="text-[#5A3A3E] leading-relaxed">
+        {point}
+      </p>
+    </div>
+  ))}
+</div>
                 </div>
               </motion.div>
             </div>
