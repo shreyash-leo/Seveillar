@@ -12,6 +12,7 @@ import { motion, Variants } from "framer-motion";
 
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import ScrollProgress from "../components/ScrollProgress";
 
 // Animation variants (memoized outside component - already good!)
 const fadeInUp: Variants = {
@@ -468,14 +469,14 @@ export default function AboutClient() {
                 management across multiple regions.
               </p>
 
-              <p className="mt-5 text-[#5A3A3E] leading-relaxed">
+              <p className="mt-6 text-[#5A3A3E] leading-relaxed text-lg">
                 Through strategic partnerships with qualified vendors,
                 logistics providers, and industry specialists, we ensure
                 efficient sourcing, storage, and distribution of clinical
                 supplies for global clinical studies.
               </p>
 
-              <p className="mt-5 text-[#5A3A3E] leading-relaxed">
+              <p className="mt-6 text-[#5A3A3E] leading-relaxed text-lg">
                 Our network supports regulatory compliance, supply chain
                 integrity, and timely project execution throughout the clinical
                 trial lifecycle.
@@ -619,7 +620,7 @@ export default function AboutClient() {
           </div>
         </section>
       </main>
-
+      <ScrollProgress />
       <Footer />
     </>
   );

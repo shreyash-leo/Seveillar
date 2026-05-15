@@ -4,6 +4,7 @@ import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import ScrollProgress from "../components/ScrollProgress";
 
 // Animation variants (memoized outside component)
 const fadeInUp: Variants = {
@@ -814,6 +815,7 @@ export default function FacilityClient() {
         </section>
 
       </main>
+      <ScrollProgress />
       <Footer />
     </>
   );

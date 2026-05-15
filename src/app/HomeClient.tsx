@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import ScrollProgress from "./components/ScrollProgress";
 
 // Animation variants - SAME as Facility/Why Us pages
 const fadeInUp: Variants = {
@@ -539,143 +540,308 @@ export default function HomeClient() {
           </div>
         </section>
 
-        {/* ================= FACILITY INFRASTRUCTURE SECTION - WITH ANIMATIONS ================= */}
-        {/* Capabilities Background: #F8F2EF (light brown tint) */}
-        <section className="relative overflow-hidden py-32 bg-[#4C292F]">
-          <div className="absolute top-14 left-0 w-full h-5 bg-[#E95A25]"></div>
+        {/* ================= FACILITY INFRASTRUCTURE — EQUAL PREMIUM GRID ================= */}
 
-          <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-14 relative z-10">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }} 
-              variants={fadeInUp}
-              className="text-center mb-20"
-            >
-              <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-[#E95A25]/30 bg-[#2A1D18]/80 backdrop-blur-md mb-6">
-                <div className="w-2 h-2 rounded-full bg-[#E95A25] animate-pulse"></div>
-                <span className="text-sm tracking-[0.25em] uppercase text-[#D6B097] font-medium">
-                  Infrastructure Excellence
-                </span>
+<section className="relative overflow-hidden bg-[#140F0D] py-20">
+  {/* Background Glow */}
+  <div className="absolute inset-0">
+    <div className="absolute top-0 left-1/3 w-[420px] h-[420px] bg-[#E95A25]/10 blur-[120px] rounded-full"></div>
+    <div className="absolute bottom-0 right-0 w-[320px] h-[320px] bg-[#D6B097]/10 blur-[100px] rounded-full"></div>
+  </div>
+
+  <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
+
+    {/* Header */}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
+      className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14"
+    >
+      <div className="max-w-3xl">
+        <div className="inline-flex items-center gap-3 mb-5">
+          <div className="h-px w-10 bg-[#E95A25]"></div>
+
+          <span className="text-[#E95A25] uppercase tracking-[0.3em] text-xs font-semibold">
+            Facility Infrastructure
+          </span>
+        </div>
+
+        <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+          Advanced Infrastructure
+          <span className="block text-[#B89D8C]">
+            Built for Clinical Excellence
+          </span>
+        </h2>
+      </div>
+
+      <p className="max-w-xl text-[#9E8C82] leading-relaxed text-base">
+        High-performance pharmaceutical infrastructure designed
+        for compliant packaging, controlled storage, operational
+        reliability, and secure global distribution.
+      </p>
+    </motion.div>
+
+    {/* Equal Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 auto-rows-fr">
+
+      {/* CARD 1 */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-[#241916] to-[#1A1311] p-8 h-full"
+      >
+        <div className="absolute top-0 right-0 w-52 h-52 bg-[#E95A25]/10 blur-3xl rounded-full"></div>
+
+        <div className="relative z-10 flex flex-col h-full">
+
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <p className="text-[#E95A25] uppercase tracking-[0.25em] text-xs mb-2">
+                Strategic Location
+              </p>
+
+              <h3 className="text-2xl font-bold text-white">
+                Global Connectivity
+              </h3>
+            </div>
+
+            <div className="w-14 h-14 rounded-2xl bg-[#E95A25] flex items-center justify-center">
+              <svg
+                className="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+              />
+              </svg>
+            </div>
+          </div>
+
+          <div className="space-y-4 flex-1">
+            <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-5">
+              <p className="text-[#C7B7AE] leading-relaxed text-sm">
+                Located in 5 Star MIDC Industrial Zone,
+                Ranjangaon, Pune – India.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="rounded-2xl bg-black/20 p-5">
+                <p className="text-3xl font-bold text-white">50 KM</p>
+                <p className="text-[#8E7B72] text-sm mt-2">
+                  Pune Airport
+                </p>
               </div>
 
-              <h2 className="text-5xl md:text-7xl font-bold text-white leading-tight tracking-tight">
-                Facility Infrastructure
-              </h2>
+              <div className="rounded-2xl bg-black/20 p-5">
+                <p className="text-3xl font-bold text-white">180 KM</p>
+                <p className="text-[#8E7B72] text-sm mt-2">
+                  Mumbai Airport
+                </p>
+              </div>
+            </div>
 
-              <p className="text-[#C6B1A5] text-lg max-w-3xl mx-auto mt-6 leading-relaxed">
-                World-class infrastructure designed for precision, compliance,
-                operational reliability, and pharmaceutical-grade excellence.
+            <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-5">
+              <p className="text-[#C7B7AE] leading-relaxed text-sm">
+                Seamless national highway, logistics,
+                and air route connectivity.
               </p>
-            </motion.div>
-
-            <motion.div 
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8"
-            >
-              {/* Card 1 - Updated colors */}
-              <motion.div variants={fadeInUp} className="bg-white rounded-[38px] border border-[#FAD1C3] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-                <div className="bg-[#FAD1C3] px-6 pt-10 pb-20 relative">
-                  <h3 className="text-3xl font-bold text-[#28151B] text-center leading-tight">
-                    Strategic Location
-                  </h3>
-                  <div className="absolute left-1/2 -bottom-12 -translate-x-1/2 w-24 h-24 rounded-full bg-white border-2 border-[#FAD1C3] flex items-center justify-center shadow-md">
-                    <svg className="w-10 h-10 text-[#E95A25]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    </svg>
-                  </div>
-                </div>
-                <div className="px-7 pt-20 pb-8">
-                  <div className="h-px bg-[#FAD1C3] mb-7"></div>
-                  <ul className="space-y-5 text-[#28151B] text-[15px] leading-relaxed">
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>Located in 5 Star MIDC (Industrial Zone), Ranjangaon, Pune-India</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>Facility is well connected to Road & Air Route</li>
-                    <li className="text-[#E95A25] font-semibold pt-2">Connectivity:</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>Connected to Airport by Four Way National Highway</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>50 Km from Pune Airport</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>180 Km from Mumbai Airport</li>
-                  </ul>
-                </div>
-              </motion.div>
-
-              {/* Card 2 - Updated colors */}
-              <motion.div variants={fadeInUp} className="bg-white rounded-[38px] border border-[#FAD1C3] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-                <div className="bg-[#FAD1C3] px-6 pt-10 pb-20 relative">
-                  <h3 className="text-3xl font-bold text-[#28151B] text-center leading-tight">
-                    Packaging Areas
-                  </h3>
-                  <div className="absolute left-1/2 -bottom-12 -translate-x-1/2 w-24 h-24 rounded-full bg-white border-2 border-[#FAD1C3] flex items-center justify-center shadow-md">
-                    <svg className="w-10 h-10 text-[#E95A25]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"/>
-                    </svg>
-                  </div>
-                </div>
-                <div className="px-7 pt-20 pb-8">
-                  <div className="h-px bg-[#FAD1C3] mb-7"></div>
-                  <ul className="space-y-5 text-[#28151B] text-[15px] leading-relaxed">
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>2 Primary & Secondary Packaging High Class Maintained GMP Suites</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>Clean Room ISO Class 8 for Primary Packaging Operations</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>cGMP Grade Equipments for Packaging Operations</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>Separate Provision for Personnel & Material Entry in Clean Room</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>Provision of Alarms for Notifications in Case of Deviations</li>
-                  </ul>
-                </div>
-              </motion.div>
-
-              {/* Card 3 - Updated colors */}
-              <motion.div variants={fadeInUp} className="bg-white rounded-[38px] border border-[#FAD1C3] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-                <div className="bg-[#FAD1C3] px-6 pt-10 pb-20 relative">
-                  <h3 className="text-3xl font-bold text-[#28151B] text-center leading-tight">
-                    Storage & Distribution
-                  </h3>
-                  <div className="absolute left-1/2 -bottom-12 -translate-x-1/2 w-24 h-24 rounded-full bg-white border-2 border-[#FAD1C3] flex items-center justify-center shadow-md">
-                    <svg className="w-10 h-10 text-[#E95A25]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 7h18M5 7v13h14V7M9 11h6M9 15h4"/>
-                    </svg>
-                  </div>
-                </div>
-                <div className="px-7 pt-20 pb-8">
-                  <div className="h-px bg-[#FAD1C3] mb-7"></div>
-                  <ul className="space-y-5 text-[#28151B] text-[15px] leading-relaxed">
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>12000 Sq.Ft dedicated warehouse & distribution areas</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>Dedicated cGMP, GDP & GWP compliant storage facilities</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>Storage available at 15°C to 25°C, 2°C to 8°C, -15°C to -25°C & -80°C</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>Restricted & controlled access to storage areas</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>21 CFR Part 11 compliant monitoring & acquisition system</li>
-                  </ul>
-                </div>
-              </motion.div>
-
-              {/* Card 4 - Updated colors */}
-              <motion.div variants={fadeInUp} className="bg-white rounded-[38px] border border-[#FAD1C3] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-                <div className="bg-[#FAD1C3] px-6 pt-10 pb-20 relative">
-                  <h3 className="text-3xl font-bold text-[#28151B] text-center leading-tight">
-                    Monitoring & Backup
-                  </h3>
-                  <div className="absolute left-1/2 -bottom-12 -translate-x-1/2 w-24 h-24 rounded-full bg-white border-2 border-[#FAD1C3] flex items-center justify-center shadow-md">
-                    <svg className="w-10 h-10 text-[#E95A25]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 17v-6m6 6V7m-9 10h12M5 21h14"/>
-                    </svg>
-                  </div>
-                </div>
-                <div className="px-7 pt-20 pb-8">
-                  <div className="h-px bg-[#FAD1C3] mb-7"></div>
-                  <ul className="space-y-5 text-[#28151B] text-[15px] leading-relaxed">
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>DG backup to all cold rooms & critical AHU’s</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>100% standby for deep freezer & critical storage areas</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>24×7 surveillance through CCTV cameras</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>Fire alarm system</li>
-                    <li className="flex gap-3"><span className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></span>Fire fighting & sprinkler system</li>
-                  </ul>
-                </div>
-              </motion.div>
-            </motion.div>
+            </div>
           </div>
-        </section>
+
+        </div>
+      </motion.div>
+
+      {/* CARD 2 */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="rounded-[28px] border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 h-full"
+      >
+        <div className="flex flex-col h-full">
+
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <p className="text-[#E95A25] uppercase tracking-[0.25em] text-xs mb-2">
+                Packaging
+              </p>
+
+              <h3 className="text-2xl font-bold text-white">
+                GMP Suites
+              </h3>
+            </div>
+
+            <div className="text-right">
+              <p className="text-4xl font-bold text-[#E95A25]">
+                ISO 8
+              </p>
+
+              <p className="text-[#8F7D74] text-sm">
+                Clean Room
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-4 flex-1">
+            {[
+              "Primary & secondary packaging suites",
+              "ISO Class 8 clean room operations",
+              "cGMP compliant equipment systems",
+              "Dedicated personnel & material entry",
+              "Deviation alarm notification systems"
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="flex items-start gap-3 rounded-xl border border-white/5 bg-black/10 px-4 py-4"
+              >
+                <div className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></div>
+
+                <p className="text-[#C7B7AE] text-sm leading-relaxed">
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </motion.div>
+
+      {/* CARD 3 */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="rounded-[28px] border border-white/10 bg-gradient-to-br from-[#1C1614] to-[#251A17] p-8 h-full"
+      >
+        <div className="flex flex-col h-full">
+
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <p className="text-[#E95A25] uppercase tracking-[0.25em] text-xs mb-2">
+                Storage
+              </p>
+
+              <h3 className="text-2xl font-bold text-white">
+                Controlled Distribution
+              </h3>
+            </div>
+
+            <div className="w-14 h-14 rounded-2xl bg-[#E95A25]/15 flex items-center justify-center">
+              <svg
+                className="w-7 h-7 text-[#E95A25]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 flex-1">
+            {[
+              "12,000 Sq.Ft warehouse",
+              "GDP & GWP compliant",
+              "Restricted access control",
+              "21 CFR Part 11 monitoring"
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="rounded-2xl border border-white/5 bg-white/[0.03] p-5 flex items-center"
+              >
+                <p className="text-[#C7B7AE] text-sm leading-relaxed">
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-5 rounded-2xl bg-[#E95A25]/10 border border-[#E95A25]/20 p-5">
+            <p className="text-[#F1D5C8] text-sm leading-relaxed">
+              Temperature-controlled storage available at
+              15°C–25°C, 2°C–8°C, -15°C–-25°C & -80°C.
+            </p>
+          </div>
+
+        </div>
+      </motion.div>
+
+      {/* CARD 4 */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="rounded-[28px] border border-white/10 bg-[#E95A25]/5 p-8 h-full"
+      >
+        <div className="flex flex-col h-full">
+
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <p className="text-[#E95A25] uppercase tracking-[0.25em] text-xs mb-2">
+                Monitoring
+              </p>
+
+              <h3 className="text-2xl font-bold text-white">
+                Backup & Security
+              </h3>
+            </div>
+
+            <div className="text-right">
+              <p className="text-3xl font-bold text-white">
+                24×7
+              </p>
+
+              <p className="text-[#8F7D74] text-sm">
+                Surveillance
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-4 flex-1">
+            {[
+              "DG backup for cold rooms & critical AHU systems",
+              "100% standby support for deep freezers",
+              "Continuous CCTV surveillance monitoring",
+              "Integrated fire alarm & sprinkler systems",
+              "Advanced environmental monitoring controls"
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="flex items-start gap-4 border-b border-white/5 pb-4"
+              >
+                <div className="w-2 h-2 rounded-full bg-[#E95A25] mt-2"></div>
+
+                <p className="text-[#C7B7AE] leading-relaxed text-sm">
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
 
         {/* ================= TIMELINE SECTION - WITH ANIMATIONS ================= */}
         {/* Services Offered Background: #FFF8F5 (very pale orange) per specification */}
@@ -811,6 +977,7 @@ export default function HomeClient() {
         </section>
 
       </main>
+      <ScrollProgress />
       <Footer />
     </>
   );

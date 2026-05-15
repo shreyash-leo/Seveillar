@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import ScrollProgress from "../components/ScrollProgress";
 
 // ─── Animation Variants ────────────────────────────────────────────────────────
 
@@ -752,6 +753,7 @@ export default function WhyUsClient() {
         </section>
 
       </main>
+      <ScrollProgress />
       <Footer />
     </>
   );

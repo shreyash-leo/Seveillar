@@ -10,6 +10,7 @@ import { motion, Variants } from "framer-motion";
 
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import ScrollProgress from "../components/ScrollProgress";
 
 // Animation variants with proper Framer Motion types
 const fadeInUp: Variants = {
@@ -353,6 +354,7 @@ export default function ContactClient() {
           </div>
         </section>
       </main>
+      <ScrollProgress />
       <Footer />
     </>
   );
