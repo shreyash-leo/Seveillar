@@ -8,24 +8,29 @@ export default function ScrollProgress() {
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
-    const updateScrollProgress = () => {
-      const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
+  let animationFrameId: number;
 
-      const progress = (scrollTop / docHeight) * 100;
+  const updateScrollProgress = () => {
+    const scrollTop = window.scrollY;
 
-      setScrollPercentage(progress);
-      setShowButton(scrollTop > 400);
-    };
+    const docHeight =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
 
-    window.addEventListener("scroll", updateScrollProgress);
+    const progress = (scrollTop / docHeight) * 100;
 
-    return () => {
-      window.removeEventListener("scroll", updateScrollProgress);
-    };
-  }, []);
+    setScrollPercentage(progress);
+    setShowButton(scrollTop > 400);
+
+    animationFrameId = requestAnimationFrame(updateScrollProgress);
+  };
+
+  updateScrollProgress();
+
+  return () => {
+    cancelAnimationFrame(animationFrameId);
+  };
+}, []);
 
   const radius = 28;
   const circumference = 2 * Math.PI * radius;
@@ -80,7 +85,7 @@ export default function ScrollProgress() {
                 strokeLinecap="round"
                 strokeDasharray={circumference}
                 strokeDashoffset={strokeDashoffset}
-                className="transition-all duration-150"
+                className="transition-none"
               />
             </svg>
 

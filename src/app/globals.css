@@ -50,3 +50,7 @@ body {
 .custom-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(233, 90, 37, 0.5);
 }
+
+* {
+  cursor: none !important;
+}
